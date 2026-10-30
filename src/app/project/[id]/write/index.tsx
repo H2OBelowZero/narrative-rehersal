@@ -1,6 +1,6 @@
 // Write Room board: every script in the project pinned as an index card, the coloured revision pages fanned behind
 // it. A blank card starts a new script; a compiled draft from the Screenplay Room can be typed up to rewrite.
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -40,6 +40,18 @@ export default function WriteBoard() {
   const [query, setQuery] = useState('');
   const [creating, setCreating] = useState(false);
   const [typing, setTyping] = useState<string | null>(null);
+  // The project board's "New script" arrives with ?new=1: open the sheet when the param appears; closing it drops
+  // the param so the next arrival opens it again.
+  const { new: startNew } = useLocalSearchParams<{ new?: string }>();
+  const [seenNew, setSeenNew] = useState<string | undefined>();
+  if (startNew !== seenNew) {
+    setSeenNew(startNew);
+    if (startNew === '1') setCreating(true);
+  }
+  const closeCreating = () => {
+    setCreating(false);
+    if (startNew) router.setParams({ new: undefined });
+  };
   if (!project) return null;
 
   if (blind) {
@@ -131,7 +143,7 @@ export default function WriteBoard() {
         </Section>
       )}
 
-      <NewScriptSheet visible={creating} onClose={() => setCreating(false)} onCreated={open} />
+      <NewScriptSheet visible={creating} onClose={closeCreating} onCreated={open} />
     </Screen>
   );
 }

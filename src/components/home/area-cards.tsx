@@ -1,6 +1,7 @@
 // The project board's four areas, pinned in nav order and joined by one red string (thread 'flow'). Each card is
 // what the area holds right now; tapping it follows the string there. Structure stays with those who steer
 // (seeMeta), analysis with those who analyse, and nothing here judges a choice.
+import { router } from 'expo-router';
 import type { ReactNode } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
@@ -9,12 +10,15 @@ import type { Discovery, StoryEvent } from '@shared/types';
 
 import { fillImage, sceneImage } from '@/components/board/materials';
 import { paperShadow, tiltFor } from '@/components/board/paper';
+import { useBlindSession } from '@/components/discover/blind-lock';
 import { followString, type TabName } from '@/components/string-nav';
+import { pageCount, sceneCount } from '@/components/write/format';
 import {
   Avatar,
   Badge,
   beatIcon,
   Body,
+  Button,
   Caption,
   Card,
   Eyebrow,
@@ -236,6 +240,83 @@ function Goal() {
         </Caption>
       </View>
     </View>
+  );
+}
+
+// ───────── Write ─────────
+
+/**
+ * A shortcut to the page for those who arrive with the idea already: pick up the latest script or start a new one,
+ * without walking the board first. Taped, not strung: it sits outside the play-then-write order. Hidden in a blind
+ * session (performers don't read the pages) and from read-only roles while there is nothing to read.
+ */
+export function WriteCard() {
+  const { project, projectId, can } = useProject();
+  const { colors } = useTheme(); // paper
+  const blind = useBlindSession();
+  if (!project || blind) return null;
+  const editable = can('editModel');
+  const latest = [...project.scripts].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0];
+  if (!editable && !latest) return null;
+
+  const openScript = (scriptId: string) =>
+    router.push({ pathname: '/project/[id]/write/[scriptId]', params: { id: projectId, scriptId } });
+  const pages = latest ? pageCount(latest.elements) : 0;
+  const scenes = latest ? sceneCount(latest.elements) : 0;
+  const total = project.scripts.length;
+
+  return (
+    <Section title="Write" note="straight to the page">
+      <Card fasten="tape" tilt="write">
+        <View style={styles.beatHead}>
+          <InkMark name="edit" />
+          <View style={[styles.grow, styles.tight]}>
+            <Heading>{editable ? 'Already have the idea?' : 'Read the script'}</Heading>
+            <Caption>{editable ? 'Skip ahead and start writing.' : 'The latest pages the writers are working on.'}</Caption>
+          </View>
+        </View>
+        {latest && (
+          <Card
+            onPress={() => openScript(latest.id)}
+            accessibilityLabel={`${editable ? 'Continue' : 'Read'} ${latest.title}, ${pages} ${pages === 1 ? 'page' : 'pages'}, edited ${timeAgo(latest.updatedAt)}`}>
+            <View style={styles.row}>
+              <View style={[styles.grow, styles.tight]}>
+                <Body strong numberOfLines={1}>
+                  {editable ? 'Continue: ' : ''}
+                  {latest.title}
+                </Body>
+                <View style={styles.terms}>
+                  <Term icon="script" text={`${pages} ${pages === 1 ? 'page' : 'pages'}`} spoken={`${pages} pages`} />
+                  <Term icon="el-heading" text={`${scenes} ${scenes === 1 ? 'scene' : 'scenes'}`} spoken={`${scenes} scenes`} />
+                  <Term icon="clock" text={timeAgo(latest.updatedAt)} spoken={`edited ${timeAgo(latest.updatedAt)}`} />
+                </View>
+              </View>
+              <Icon name="chevron-right" size={18} color={colors.accentText} />
+            </View>
+          </Card>
+        )}
+        <View style={styles.rowWrap}>
+          {editable && (
+            <Button
+              title="New script"
+              icon="plus"
+              size="sm"
+              variant={latest ? 'secondary' : 'primary'}
+              onPress={() => followString(projectId, 'write', { new: '1' })}
+            />
+          )}
+          {total > 0 && (
+            <Button
+              title={total === 1 ? 'Open Write' : `All ${total} scripts`}
+              icon="arrow-right"
+              size="sm"
+              variant="ghost"
+              onPress={() => followString(projectId, 'write')}
+            />
+          )}
+        </View>
+      </Card>
+    </Section>
   );
 }
 

@@ -8,7 +8,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, wi
 
 import type { Project, StoryModel } from '@shared/types';
 
-import { CrewCard, DiscoverCard, RehearseCard, StoryCard } from '@/components/home/area-cards';
+import { CrewCard, DiscoverCard, RehearseCard, StoryCard, WriteCard } from '@/components/home/area-cards';
 import { HeaderWordmark, WIDE } from '@/components/home/desk-hero';
 import { followString } from '@/components/string-nav';
 import { storyStyles, useMutation, useSheet } from '@/components/story/common';
@@ -54,6 +54,7 @@ export default function ProjectBoard() {
       <Card pin="brass" tilt="title">
         <TitleFace project={project} offline={!!error} />
       </Card>
+      <WriteCard />
       {wide ? (
         // Two rows, read along the string: Story to Rehearse, down to Crew, back across to Discover.
         <>
