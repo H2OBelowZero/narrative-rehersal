@@ -1,0 +1,1069 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-28T19:22:24.452Z",
+  "title": "Design System: The Story Desk",
+  "extensions": {
+    "colorMeta": {
+      "brass": {
+        "role": "primary",
+        "displayName": "Lamp Brass",
+        "canonical": "#C9A25B",
+        "oklch": "oklch(73.3% 0.101 81.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.101 81.1)",
+          "oklch(26.4% 0.101 81.1)",
+          "oklch(37.9% 0.101 81.1)",
+          "oklch(49.3% 0.101 81.1)",
+          "oklch(60.7% 0.101 81.1)",
+          "oklch(72.1% 0.101 81.1)",
+          "oklch(83.6% 0.101 81.1)",
+          "oklch(95.0% 0.101 81.1)"
+        ]
+      },
+      "brass-text": {
+        "role": "primary",
+        "displayName": "Polished Brass",
+        "canonical": "#DBB872",
+        "oklch": "oklch(79.8% 0.097 83.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.097 83.7)",
+          "oklch(26.4% 0.097 83.7)",
+          "oklch(37.9% 0.097 83.7)",
+          "oklch(49.3% 0.097 83.7)",
+          "oklch(60.7% 0.097 83.7)",
+          "oklch(72.1% 0.097 83.7)",
+          "oklch(83.6% 0.097 83.7)",
+          "oklch(95.0% 0.097 83.7)"
+        ]
+      },
+      "on-brass": {
+        "role": "primary",
+        "displayName": "Brass Shadow",
+        "canonical": "#1D150A",
+        "oklch": "oklch(20.2% 0.024 74.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.024 74.6)",
+          "oklch(26.4% 0.024 74.6)",
+          "oklch(37.9% 0.024 74.6)",
+          "oklch(49.3% 0.024 74.6)",
+          "oklch(60.7% 0.024 74.6)",
+          "oklch(72.1% 0.024 74.6)",
+          "oklch(83.6% 0.024 74.6)",
+          "oklch(95.0% 0.024 74.6)"
+        ]
+      },
+      "brass-soft": {
+        "role": "primary",
+        "displayName": "Brass Soft",
+        "canonical": "#3A2E1A",
+        "oklch": "oklch(30.9% 0.037 79.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.037 79.5)",
+          "oklch(26.4% 0.037 79.5)",
+          "oklch(37.9% 0.037 79.5)",
+          "oklch(49.3% 0.037 79.5)",
+          "oklch(60.7% 0.037 79.5)",
+          "oklch(72.1% 0.037 79.5)",
+          "oklch(83.6% 0.037 79.5)",
+          "oklch(95.0% 0.037 79.5)"
+        ]
+      },
+      "brass-ink": {
+        "role": "primary",
+        "displayName": "Brass Ink",
+        "canonical": "#6B480E",
+        "oklch": "oklch(43.1% 0.084 74.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.084 74.2)",
+          "oklch(26.4% 0.084 74.2)",
+          "oklch(37.9% 0.084 74.2)",
+          "oklch(49.3% 0.084 74.2)",
+          "oklch(60.7% 0.084 74.2)",
+          "oklch(72.1% 0.084 74.2)",
+          "oklch(83.6% 0.084 74.2)",
+          "oklch(95.0% 0.084 74.2)"
+        ]
+      },
+      "brass-wash": {
+        "role": "primary",
+        "displayName": "Brass Wash",
+        "canonical": "#E4D3AC",
+        "oklch": "oklch(87.1% 0.055 87.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.055 87.2)",
+          "oklch(26.4% 0.055 87.2)",
+          "oklch(37.9% 0.055 87.2)",
+          "oklch(49.3% 0.055 87.2)",
+          "oklch(60.7% 0.055 87.2)",
+          "oklch(72.1% 0.055 87.2)",
+          "oklch(83.6% 0.055 87.2)",
+          "oklch(95.0% 0.055 87.2)"
+        ]
+      },
+      "string-red": {
+        "role": "secondary",
+        "displayName": "String Red",
+        "canonical": "#A8201A",
+        "oklch": "oklch(47.6% 0.172 28.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.172 28.5)",
+          "oklch(26.4% 0.172 28.5)",
+          "oklch(37.9% 0.172 28.5)",
+          "oklch(49.3% 0.172 28.5)",
+          "oklch(60.7% 0.172 28.5)",
+          "oklch(72.1% 0.172 28.5)",
+          "oklch(83.6% 0.172 28.5)",
+          "oklch(95.0% 0.172 28.5)"
+        ]
+      },
+      "string-highlight": {
+        "role": "secondary",
+        "displayName": "String Highlight",
+        "canonical": "#D2473A",
+        "oklch": "oklch(59.1% 0.177 28.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.177 28.9)",
+          "oklch(26.4% 0.177 28.9)",
+          "oklch(37.9% 0.177 28.9)",
+          "oklch(49.3% 0.177 28.9)",
+          "oklch(60.7% 0.177 28.9)",
+          "oklch(72.1% 0.177 28.9)",
+          "oklch(83.6% 0.177 28.9)",
+          "oklch(95.0% 0.177 28.9)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Aged Ivory",
+        "canonical": "#EDE3CC",
+        "oklch": "oklch(91.8% 0.032 87.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.032 87.3)",
+          "oklch(26.4% 0.032 87.3)",
+          "oklch(37.9% 0.032 87.3)",
+          "oklch(49.3% 0.032 87.3)",
+          "oklch(60.7% 0.032 87.3)",
+          "oklch(72.1% 0.032 87.3)",
+          "oklch(83.6% 0.032 87.3)",
+          "oklch(95.0% 0.032 87.3)"
+        ]
+      },
+      "paper-light": {
+        "role": "neutral",
+        "displayName": "Card Stock",
+        "canonical": "#F4ECDA",
+        "oklch": "oklch(94.5% 0.025 86.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.025 86.9)",
+          "oklch(26.4% 0.025 86.9)",
+          "oklch(37.9% 0.025 86.9)",
+          "oklch(49.3% 0.025 86.9)",
+          "oklch(60.7% 0.025 86.9)",
+          "oklch(72.1% 0.025 86.9)",
+          "oklch(83.6% 0.025 86.9)",
+          "oklch(95.0% 0.025 86.9)"
+        ]
+      },
+      "paper-sunken": {
+        "role": "neutral",
+        "displayName": "Slip Paper",
+        "canonical": "#E2D5B8",
+        "oklch": "oklch(87.6% 0.041 86.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.041 86.7)",
+          "oklch(26.4% 0.041 86.7)",
+          "oklch(37.9% 0.041 86.7)",
+          "oklch(49.3% 0.041 86.7)",
+          "oklch(60.7% 0.041 86.7)",
+          "oklch(72.1% 0.041 86.7)",
+          "oklch(83.6% 0.041 86.7)",
+          "oklch(95.0% 0.041 86.7)"
+        ]
+      },
+      "paper-rule": {
+        "role": "neutral",
+        "displayName": "Ruled Tan",
+        "canonical": "#C4B38D",
+        "oklch": "oklch(77.2% 0.055 86.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.055 86.7)",
+          "oklch(26.4% 0.055 86.7)",
+          "oklch(37.9% 0.055 86.7)",
+          "oklch(49.3% 0.055 86.7)",
+          "oklch(60.7% 0.055 86.7)",
+          "oklch(72.1% 0.055 86.7)",
+          "oklch(83.6% 0.055 86.7)",
+          "oklch(95.0% 0.055 86.7)"
+        ]
+      },
+      "paper-separator": {
+        "role": "neutral",
+        "displayName": "Crease",
+        "canonical": "#D5C7A6",
+        "oklch": "oklch(83.3% 0.047 87.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.047 87.8)",
+          "oklch(26.4% 0.047 87.8)",
+          "oklch(37.9% 0.047 87.8)",
+          "oklch(49.3% 0.047 87.8)",
+          "oklch(60.7% 0.047 87.8)",
+          "oklch(72.1% 0.047 87.8)",
+          "oklch(83.6% 0.047 87.8)",
+          "oklch(95.0% 0.047 87.8)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Typewriter Ink",
+        "canonical": "#241E17",
+        "oklch": "oklch(24.0% 0.016 71.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.016 71.3)",
+          "oklch(26.4% 0.016 71.3)",
+          "oklch(37.9% 0.016 71.3)",
+          "oklch(49.3% 0.016 71.3)",
+          "oklch(60.7% 0.016 71.3)",
+          "oklch(72.1% 0.016 71.3)",
+          "oklch(83.6% 0.016 71.3)",
+          "oklch(95.0% 0.016 71.3)"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#4A4034",
+        "oklch": "oklch(37.8% 0.024 72.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.024 72.1)",
+          "oklch(26.4% 0.024 72.1)",
+          "oklch(37.9% 0.024 72.1)",
+          "oklch(49.3% 0.024 72.1)",
+          "oklch(60.7% 0.024 72.1)",
+          "oklch(72.1% 0.024 72.1)",
+          "oklch(83.6% 0.024 72.1)",
+          "oklch(95.0% 0.024 72.1)"
+        ]
+      },
+      "ink-tertiary": {
+        "role": "neutral",
+        "displayName": "Pencil",
+        "canonical": "#5B4F40",
+        "oklch": "oklch(43.5% 0.029 73.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.029 73.1)",
+          "oklch(26.4% 0.029 73.1)",
+          "oklch(37.9% 0.029 73.1)",
+          "oklch(49.3% 0.029 73.1)",
+          "oklch(60.7% 0.029 73.1)",
+          "oklch(72.1% 0.029 73.1)",
+          "oklch(83.6% 0.029 73.1)",
+          "oklch(95.0% 0.029 73.1)"
+        ]
+      },
+      "ink-fill": {
+        "role": "neutral",
+        "displayName": "Ink Fill",
+        "canonical": "#2B241C",
+        "oklch": "oklch(26.6% 0.018 70.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.018 70.7)",
+          "oklch(26.4% 0.018 70.7)",
+          "oklch(37.9% 0.018 70.7)",
+          "oklch(49.3% 0.018 70.7)",
+          "oklch(60.7% 0.018 70.7)",
+          "oklch(72.1% 0.018 70.7)",
+          "oklch(83.6% 0.018 70.7)",
+          "oklch(95.0% 0.018 70.7)"
+        ]
+      },
+      "desk": {
+        "role": "neutral",
+        "displayName": "Night Desk",
+        "canonical": "#14110E",
+        "oklch": "oklch(18.0% 0.008 67.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 67.3)",
+          "oklch(26.4% 0.008 67.3)",
+          "oklch(37.9% 0.008 67.3)",
+          "oklch(49.3% 0.008 67.3)",
+          "oklch(60.7% 0.008 67.3)",
+          "oklch(72.1% 0.008 67.3)",
+          "oklch(83.6% 0.008 67.3)",
+          "oklch(95.0% 0.008 67.3)"
+        ]
+      },
+      "desk-surface": {
+        "role": "neutral",
+        "displayName": "Desk Surface",
+        "canonical": "#1E1A16",
+        "oklch": "oklch(22.1% 0.010 67.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 67.3)",
+          "oklch(26.4% 0.010 67.3)",
+          "oklch(37.9% 0.010 67.3)",
+          "oklch(49.3% 0.010 67.3)",
+          "oklch(60.7% 0.010 67.3)",
+          "oklch(72.1% 0.010 67.3)",
+          "oklch(83.6% 0.010 67.3)",
+          "oklch(95.0% 0.010 67.3)"
+        ]
+      },
+      "desk-raised": {
+        "role": "neutral",
+        "displayName": "Desk Raised",
+        "canonical": "#2A241E",
+        "oklch": "oklch(26.5% 0.014 67.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 67.2)",
+          "oklch(26.4% 0.014 67.2)",
+          "oklch(37.9% 0.014 67.2)",
+          "oklch(49.3% 0.014 67.2)",
+          "oklch(60.7% 0.014 67.2)",
+          "oklch(72.1% 0.014 67.2)",
+          "oklch(83.6% 0.014 67.2)",
+          "oklch(95.0% 0.014 67.2)"
+        ]
+      },
+      "desk-border": {
+        "role": "neutral",
+        "displayName": "Desk Seam",
+        "canonical": "#3B332B",
+        "oklch": "oklch(32.7% 0.018 67.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.018 67.1)",
+          "oklch(26.4% 0.018 67.1)",
+          "oklch(37.9% 0.018 67.1)",
+          "oklch(49.3% 0.018 67.1)",
+          "oklch(60.7% 0.018 67.1)",
+          "oklch(72.1% 0.018 67.1)",
+          "oklch(83.6% 0.018 67.1)",
+          "oklch(95.0% 0.018 67.1)"
+        ]
+      },
+      "desk-separator": {
+        "role": "neutral",
+        "displayName": "Desk Seam Dark",
+        "canonical": "#2C2620",
+        "oklch": "oklch(27.3% 0.014 67.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 67.2)",
+          "oklch(26.4% 0.014 67.2)",
+          "oklch(37.9% 0.014 67.2)",
+          "oklch(49.3% 0.014 67.2)",
+          "oklch(60.7% 0.014 67.2)",
+          "oklch(72.1% 0.014 67.2)",
+          "oklch(83.6% 0.014 67.2)",
+          "oklch(95.0% 0.014 67.2)"
+        ]
+      },
+      "chalk": {
+        "role": "neutral",
+        "displayName": "Chalk",
+        "canonical": "#EFE7D8",
+        "oklch": "oklch(93.0% 0.022 83.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.022 83.3)",
+          "oklch(26.4% 0.022 83.3)",
+          "oklch(37.9% 0.022 83.3)",
+          "oklch(49.3% 0.022 83.3)",
+          "oklch(60.7% 0.022 83.3)",
+          "oklch(72.1% 0.022 83.3)",
+          "oklch(83.6% 0.022 83.3)",
+          "oklch(95.0% 0.022 83.3)"
+        ]
+      },
+      "chalk-secondary": {
+        "role": "neutral",
+        "displayName": "Dust",
+        "canonical": "#B7AD9C",
+        "oklch": "oklch(75.1% 0.026 81.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.026 81.1)",
+          "oklch(26.4% 0.026 81.1)",
+          "oklch(37.9% 0.026 81.1)",
+          "oklch(49.3% 0.026 81.1)",
+          "oklch(60.7% 0.026 81.1)",
+          "oklch(72.1% 0.026 81.1)",
+          "oklch(83.6% 0.026 81.1)",
+          "oklch(95.0% 0.026 81.1)"
+        ]
+      },
+      "chalk-tertiary": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "#968C7C",
+        "oklch": "oklch(64.4% 0.026 79.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.026 79.7)",
+          "oklch(26.4% 0.026 79.7)",
+          "oklch(37.9% 0.026 79.7)",
+          "oklch(49.3% 0.026 79.7)",
+          "oklch(60.7% 0.026 79.7)",
+          "oklch(72.1% 0.026 79.7)",
+          "oklch(83.6% 0.026 79.7)",
+          "oklch(95.0% 0.026 79.7)"
+        ]
+      },
+      "cork": {
+        "role": "material",
+        "displayName": "Cork",
+        "canonical": "#5B3F26",
+        "oklch": "oklch(39.3% 0.055 61.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.055 61.9)",
+          "oklch(26.4% 0.055 61.9)",
+          "oklch(37.9% 0.055 61.9)",
+          "oklch(49.3% 0.055 61.9)",
+          "oklch(60.7% 0.055 61.9)",
+          "oklch(72.1% 0.055 61.9)",
+          "oklch(83.6% 0.055 61.9)",
+          "oklch(95.0% 0.055 61.9)"
+        ]
+      },
+      "walnut-frame": {
+        "role": "material",
+        "displayName": "Walnut Frame",
+        "canonical": "#2A1E14",
+        "oklch": "oklch(24.7% 0.026 61.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.026 61.0)",
+          "oklch(26.4% 0.026 61.0)",
+          "oklch(37.9% 0.026 61.0)",
+          "oklch(49.3% 0.026 61.0)",
+          "oklch(60.7% 0.026 61.0)",
+          "oklch(72.1% 0.026 61.0)",
+          "oklch(83.6% 0.026 61.0)",
+          "oklch(95.0% 0.026 61.0)"
+        ]
+      },
+      "tape": {
+        "role": "material",
+        "displayName": "Masking Tape",
+        "canonical": "#D8CAA6",
+        "oklch": "oklch(84.1% 0.051 89.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.051 89.3)",
+          "oklch(26.4% 0.051 89.3)",
+          "oklch(37.9% 0.051 89.3)",
+          "oklch(49.3% 0.051 89.3)",
+          "oklch(60.7% 0.051 89.3)",
+          "oklch(72.1% 0.051 89.3)",
+          "oklch(83.6% 0.051 89.3)",
+          "oklch(95.0% 0.051 89.3)"
+        ]
+      },
+      "print-white": {
+        "role": "material",
+        "displayName": "Print White",
+        "canonical": "#F3EEE3",
+        "oklch": "oklch(95.0% 0.016 86.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.016 86.4)",
+          "oklch(26.4% 0.016 86.4)",
+          "oklch(37.9% 0.016 86.4)",
+          "oklch(49.3% 0.016 86.4)",
+          "oklch(60.7% 0.016 86.4)",
+          "oklch(72.1% 0.016 86.4)",
+          "oklch(83.6% 0.016 86.4)",
+          "oklch(95.0% 0.016 86.4)"
+        ]
+      },
+      "darkroom": {
+        "role": "material",
+        "displayName": "Darkroom",
+        "canonical": "#1A1714",
+        "oklch": "oklch(20.7% 0.008 67.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 67.4)",
+          "oklch(26.4% 0.008 67.4)",
+          "oklch(37.9% 0.008 67.4)",
+          "oklch(49.3% 0.008 67.4)",
+          "oklch(60.7% 0.008 67.4)",
+          "oklch(72.1% 0.008 67.4)",
+          "oklch(83.6% 0.008 67.4)",
+          "oklch(95.0% 0.008 67.4)"
+        ]
+      },
+      "note-yellow": {
+        "role": "material",
+        "displayName": "Faded Yellow",
+        "canonical": "#E6D38E",
+        "oklch": "oklch(86.7% 0.090 94.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.090 94.5)",
+          "oklch(26.4% 0.090 94.5)",
+          "oklch(37.9% 0.090 94.5)",
+          "oklch(49.3% 0.090 94.5)",
+          "oklch(60.7% 0.090 94.5)",
+          "oklch(72.1% 0.090 94.5)",
+          "oklch(83.6% 0.090 94.5)",
+          "oklch(95.0% 0.090 94.5)"
+        ]
+      },
+      "note-pink": {
+        "role": "material",
+        "displayName": "Faded Rose",
+        "canonical": "#E2AFA6",
+        "oklch": "oklch(79.8% 0.061 29.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.061 29.9)",
+          "oklch(26.4% 0.061 29.9)",
+          "oklch(37.9% 0.061 29.9)",
+          "oklch(49.3% 0.061 29.9)",
+          "oklch(60.7% 0.061 29.9)",
+          "oklch(72.1% 0.061 29.9)",
+          "oklch(83.6% 0.061 29.9)",
+          "oklch(95.0% 0.061 29.9)"
+        ]
+      },
+      "note-blue": {
+        "role": "material",
+        "displayName": "Faded Blue",
+        "canonical": "#A8C4CF",
+        "oklch": "oklch(80.3% 0.034 223.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.034 223.5)",
+          "oklch(26.4% 0.034 223.5)",
+          "oklch(37.9% 0.034 223.5)",
+          "oklch(49.3% 0.034 223.5)",
+          "oklch(60.7% 0.034 223.5)",
+          "oklch(72.1% 0.034 223.5)",
+          "oklch(83.6% 0.034 223.5)",
+          "oklch(95.0% 0.034 223.5)"
+        ]
+      },
+      "note-green": {
+        "role": "material",
+        "displayName": "Faded Sage",
+        "canonical": "#B9CC9C",
+        "oklch": "oklch(81.8% 0.068 125.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.068 125.4)",
+          "oklch(26.4% 0.068 125.4)",
+          "oklch(37.9% 0.068 125.4)",
+          "oklch(49.3% 0.068 125.4)",
+          "oklch(60.7% 0.068 125.4)",
+          "oklch(72.1% 0.068 125.4)",
+          "oklch(83.6% 0.068 125.4)",
+          "oklch(95.0% 0.068 125.4)"
+        ]
+      },
+      "danger-ink": {
+        "role": "semantic",
+        "displayName": "Failure Ink",
+        "canonical": "#9E2A22",
+        "oklch": "oklch(46.7% 0.154 28.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.154 28.5)",
+          "oklch(26.4% 0.154 28.5)",
+          "oklch(37.9% 0.154 28.5)",
+          "oklch(49.3% 0.154 28.5)",
+          "oklch(60.7% 0.154 28.5)",
+          "oklch(72.1% 0.154 28.5)",
+          "oklch(83.6% 0.154 28.5)",
+          "oklch(95.0% 0.154 28.5)"
+        ]
+      },
+      "danger-chalk": {
+        "role": "semantic",
+        "displayName": "Failure Chalk",
+        "canonical": "#E4705F",
+        "oklch": "oklch(67.8% 0.148 30.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.148 30.0)",
+          "oklch(26.4% 0.148 30.0)",
+          "oklch(37.9% 0.148 30.0)",
+          "oklch(49.3% 0.148 30.0)",
+          "oklch(60.7% 0.148 30.0)",
+          "oklch(72.1% 0.148 30.0)",
+          "oklch(83.6% 0.148 30.0)",
+          "oklch(95.0% 0.148 30.0)"
+        ]
+      },
+      "on-danger-ink": {
+        "role": "semantic",
+        "displayName": "On Danger (paper)",
+        "canonical": "#FBF3E6",
+        "oklch": "oklch(96.7% 0.019 80.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.019 80.1)",
+          "oklch(26.4% 0.019 80.1)",
+          "oklch(37.9% 0.019 80.1)",
+          "oklch(49.3% 0.019 80.1)",
+          "oklch(60.7% 0.019 80.1)",
+          "oklch(72.1% 0.019 80.1)",
+          "oklch(83.6% 0.019 80.1)",
+          "oklch(95.0% 0.019 80.1)"
+        ]
+      },
+      "on-danger-chalk": {
+        "role": "semantic",
+        "displayName": "On Danger (desk)",
+        "canonical": "#1A0B08",
+        "oklch": "oklch(17.1% 0.027 32.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.027 32.6)",
+          "oklch(26.4% 0.027 32.6)",
+          "oklch(37.9% 0.027 32.6)",
+          "oklch(49.3% 0.027 32.6)",
+          "oklch(60.7% 0.027 32.6)",
+          "oklch(72.1% 0.027 32.6)",
+          "oklch(83.6% 0.027 32.6)",
+          "oklch(95.0% 0.027 32.6)"
+        ]
+      },
+      "tier-critical-ink": {
+        "role": "semantic",
+        "displayName": "Critical Ink",
+        "canonical": "#1D5A70",
+        "oklch": "oklch(43.9% 0.071 226.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.071 226.0)",
+          "oklch(26.4% 0.071 226.0)",
+          "oklch(37.9% 0.071 226.0)",
+          "oklch(49.3% 0.071 226.0)",
+          "oklch(60.7% 0.071 226.0)",
+          "oklch(72.1% 0.071 226.0)",
+          "oklch(83.6% 0.071 226.0)",
+          "oklch(95.0% 0.071 226.0)"
+        ]
+      },
+      "tier-success-ink": {
+        "role": "semantic",
+        "displayName": "Success Ink",
+        "canonical": "#2D663C",
+        "oklch": "oklch(46.0% 0.091 150.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.091 150.1)",
+          "oklch(26.4% 0.091 150.1)",
+          "oklch(37.9% 0.091 150.1)",
+          "oklch(49.3% 0.091 150.1)",
+          "oklch(60.7% 0.091 150.1)",
+          "oklch(72.1% 0.091 150.1)",
+          "oklch(83.6% 0.091 150.1)",
+          "oklch(95.0% 0.091 150.1)"
+        ]
+      },
+      "tier-complication-ink": {
+        "role": "semantic",
+        "displayName": "Complication Ink",
+        "canonical": "#8F4E10",
+        "oklch": "oklch(49.2% 0.111 57.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.111 57.4)",
+          "oklch(26.4% 0.111 57.4)",
+          "oklch(37.9% 0.111 57.4)",
+          "oklch(49.3% 0.111 57.4)",
+          "oklch(60.7% 0.111 57.4)",
+          "oklch(72.1% 0.111 57.4)",
+          "oklch(83.6% 0.111 57.4)",
+          "oklch(95.0% 0.111 57.4)"
+        ]
+      },
+      "tier-critical-chalk": {
+        "role": "semantic",
+        "displayName": "Critical Chalk",
+        "canonical": "#6BB8D4",
+        "oklch": "oklch(74.3% 0.086 223.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.086 223.6)",
+          "oklch(26.4% 0.086 223.6)",
+          "oklch(37.9% 0.086 223.6)",
+          "oklch(49.3% 0.086 223.6)",
+          "oklch(60.7% 0.086 223.6)",
+          "oklch(72.1% 0.086 223.6)",
+          "oklch(83.6% 0.086 223.6)",
+          "oklch(95.0% 0.086 223.6)"
+        ]
+      },
+      "tier-success-chalk": {
+        "role": "semantic",
+        "displayName": "Success Chalk",
+        "canonical": "#79C394",
+        "oklch": "oklch(75.6% 0.101 155.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.101 155.3)",
+          "oklch(26.4% 0.101 155.3)",
+          "oklch(37.9% 0.101 155.3)",
+          "oklch(49.3% 0.101 155.3)",
+          "oklch(60.7% 0.101 155.3)",
+          "oklch(72.1% 0.101 155.3)",
+          "oklch(83.6% 0.101 155.3)",
+          "oklch(95.0% 0.101 155.3)"
+        ]
+      },
+      "tier-complication-chalk": {
+        "role": "semantic",
+        "displayName": "Complication Chalk",
+        "canonical": "#E7985C",
+        "oklch": "oklch(74.7% 0.122 56.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.122 56.7)",
+          "oklch(26.4% 0.122 56.7)",
+          "oklch(37.9% 0.122 56.7)",
+          "oklch(49.3% 0.122 56.7)",
+          "oklch(60.7% 0.122 56.7)",
+          "oklch(72.1% 0.122 56.7)",
+          "oklch(83.6% 0.122 56.7)",
+          "oklch(95.0% 0.122 56.7)"
+        ]
+      },
+      "canon-ink": {
+        "role": "semantic",
+        "displayName": "Canon Ink",
+        "canonical": "#27507A",
+        "oklch": "oklch(42.3% 0.084 251.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.084 251.0)",
+          "oklch(26.4% 0.084 251.0)",
+          "oklch(37.9% 0.084 251.0)",
+          "oklch(49.3% 0.084 251.0)",
+          "oklch(60.7% 0.084 251.0)",
+          "oklch(72.1% 0.084 251.0)",
+          "oklch(83.6% 0.084 251.0)",
+          "oklch(95.0% 0.084 251.0)"
+        ]
+      },
+      "canon-chalk": {
+        "role": "semantic",
+        "displayName": "Canon Chalk",
+        "canonical": "#8DB7E2",
+        "oklch": "oklch(76.5% 0.077 249.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.077 249.5)",
+          "oklch(26.4% 0.077 249.5)",
+          "oklch(37.9% 0.077 249.5)",
+          "oklch(49.3% 0.077 249.5)",
+          "oklch(60.7% 0.077 249.5)",
+          "oklch(72.1% 0.077 249.5)",
+          "oklch(83.6% 0.077 249.5)",
+          "oklch(95.0% 0.077 249.5)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The THE / STORY DESK wordmark only; scaled 16 / 18 / 34 / 58px by placement, tracking ~0.18em of size."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The <Title> component (paperTypography.title): card and page titles typed on paper, often in capitals."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "The <Heading> component (paperTypography.heading): card headings and sheet titles on paper."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose typed on paper; loglines in italic."
+      },
+      "typed-field": {
+        "displayName": "Typed Field",
+        "purpose": "Text typed into a field on paper: Courier Prime at the chrome body size (16/23)."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Secondary typed lines on paper. Tiers within it are split by type style or size (the beat position line is italic in pencil under a faded-ink definition), never by ink alone: pencil and faded ink are about 1.27:1 apart."
+      },
+      "label": {
+        "displayName": "Field Label",
+        "purpose": "The <Eyebrow> component: typed field headings that label the value beneath them, or head a section inside a card. Never above a heading."
+      },
+      "screenplay": {
+        "displayName": "Screenplay",
+        "purpose": "Screenplay pages and scene sluglines."
+      },
+      "hand-label": {
+        "displayName": "Hand Label",
+        "purpose": "Caveat on masking tape: section labels on the board."
+      },
+      "hand-note": {
+        "displayName": "Hand Note",
+        "purpose": "Caveat asides, print captions and the motto. Never data."
+      },
+      "chrome-title": {
+        "displayName": "Chrome Title",
+        "purpose": "Platform-face titles on the desk."
+      },
+      "chrome-heading": {
+        "displayName": "Chrome Heading",
+        "purpose": "Platform-face headings on the desk."
+      },
+      "chrome-body": {
+        "displayName": "Chrome Body",
+        "purpose": "Desk text, button labels and desk fields."
+      },
+      "chrome-caption": {
+        "displayName": "Chrome Caption",
+        "purpose": "Desk captions and chip labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "paper-lift",
+        "value": "0 3px 8px rgba(0,0,0,0.42), 0 1px 1px rgba(0,0,0,0.3)",
+        "purpose": "Every pinned card, blank slip, print, sticky note and the walnut frame on the desk (native: black 0.45, radius 7, y 3; Android elevation 5)."
+      },
+      {
+        "name": "tag-lift",
+        "value": "0 2px 4px rgba(0,0,0,0.5)",
+        "purpose": "Paper tags hanging on the nav string."
+      },
+      {
+        "name": "tab-lift",
+        "value": "0 3px 5px rgba(0,0,0,0.4)",
+        "purpose": "The selected index tab, raised 2px."
+      },
+      {
+        "name": "clip",
+        "value": "0 2px 3px rgba(0,0,0,0.45)",
+        "purpose": "The binder clip on screenplay pages."
+      },
+      {
+        "name": "sheet",
+        "value": "0 8px 24px rgba(0,0,0,0.2)",
+        "purpose": "The centred web sheet over its warm scrim."
+      },
+      {
+        "name": "string-shadow",
+        "value": "stroke rgba(10,6,4,0.45) 3px, offset 1.5px 3px",
+        "purpose": "Under the red thread."
+      },
+      {
+        "name": "chalk-halo",
+        "value": "text-shadow: 0 1px 3px rgba(8,5,3,0.75)",
+        "purpose": "Chalk text on the desk and cork."
+      },
+      {
+        "name": "bead-glow",
+        "value": "0 0 10px 3px #D2473A",
+        "purpose": "The bead of light riding the nav string; the only glow in the system, a light source rather than a shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Press feedback and the arriving board."
+      },
+      {
+        "name": "press-scale",
+        "value": "scale 0.98; 120ms in, 200ms out; ease-out",
+        "purpose": "Buttons and pressable cards on iOS and web; Android uses its ripple."
+      },
+      {
+        "name": "ease-along-string",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "The bead travelling the nav string (460ms), following the thread sag."
+      },
+      {
+        "name": "bead-glow-timing",
+        "value": "90ms in, 360ms hold, 260ms out",
+        "purpose": "Bead opacity while it travels."
+      },
+      {
+        "name": "board-arrive",
+        "value": "translateX 28px to 0 over 280ms ease-out; opacity 0.35 to 1 over 240ms",
+        "purpose": "The new board slides in from the side the string was followed from."
+      },
+      {
+        "name": "tag-swing",
+        "value": "spring damping 9, stiffness 180, from 5deg",
+        "purpose": "The chosen nav tag swings on its pin."
+      },
+      {
+        "name": "reduce-motion",
+        "value": "system setting",
+        "purpose": "Reanimated follows the OS Reduce Motion setting."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "900px",
+        "purpose": "Sidebar navigation and the board framed in walnut on the desk."
+      },
+      {
+        "name": "content-max",
+        "value": "720px",
+        "purpose": "Readable column on tablets and web."
+      },
+      {
+        "name": "sheet-max",
+        "value": "560px",
+        "purpose": "Centred web sheet width."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (desk)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one brass action on the desk: start, join, confirm.",
+      "html": "<div class=\"ds-desk\"><button class=\"ds-btn-primary\">Join session</button></div>",
+      "css": ".ds-desk { background: #14110E; padding: 16px; } .ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; background: #C9A25B; color: #1D150A; border: 0.5px solid transparent; border-radius: 4px; font: 600 16px/22px system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; cursor: pointer; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-primary:hover { opacity: 0.9; } .ds-btn-primary:focus-visible { outline: 2px solid #DBB872; outline-offset: 2px; } .ds-btn-primary:active { transform: scale(0.98); opacity: 0.72; transition-duration: 120ms; } .ds-btn-primary:disabled { opacity: 0.45; }"
+    },
+    {
+      "name": "Primary Button (paper)",
+      "kind": "button",
+      "refersTo": "button-primary-paper",
+      "description": "On a card the primary action is an ink fill, never brass or red.",
+      "html": "<div class=\"ds-paper\"><button class=\"ds-btn-ink\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" aria-hidden=\"true\"><rect x=\"3.5\" y=\"3.5\" width=\"17\" height=\"17\" rx=\"3\"/><circle cx=\"8.5\" cy=\"8.5\" r=\"1.2\" fill=\"currentColor\"/><circle cx=\"15.5\" cy=\"15.5\" r=\"1.2\" fill=\"currentColor\"/><circle cx=\"15.5\" cy=\"8.5\" r=\"1.2\" fill=\"currentColor\"/><circle cx=\"8.5\" cy=\"15.5\" r=\"1.2\" fill=\"currentColor\"/></svg>Show Ines’s choices</button></div>",
+      "css": ".ds-paper { background: #EDE3CC; padding: 20px; } .ds-btn-ink { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; background: #2B241C; color: #F4ECDA; border: 0.5px solid transparent; border-radius: 4px; font: 600 16px/22px system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; cursor: pointer; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-ink:hover { opacity: 0.9; } .ds-btn-ink:focus-visible { outline: 2px solid #241E17; outline-offset: 2px; } .ds-btn-ink:active { transform: scale(0.98); opacity: 0.72; transition-duration: 120ms; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quieter actions: surface fill with a hairline seam.",
+      "html": "<div class=\"ds-desk-2\"><button class=\"ds-btn-secondary\">New branch</button></div>",
+      "css": ".ds-desk-2 { background: #14110E; padding: 16px; } .ds-btn-secondary { min-height: 44px; padding: 0 16px; background: #1E1A16; color: #EFE7D8; border: 1px solid #3B332B; border-radius: 4px; font: 600 16px/22px system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; cursor: pointer; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-secondary:hover { border-color: #968C7C; } .ds-btn-secondary:focus-visible { outline: 2px solid #DBB872; outline-offset: 2px; } .ds-btn-secondary:active { transform: scale(0.98); opacity: 0.72; transition-duration: 120ms; }"
+    },
+    {
+      "name": "Typed Field",
+      "kind": "input",
+      "refersTo": "text-field-typed",
+      "description": "A field on paper is a typed line, not a box; the rule darkens to ink on focus.",
+      "html": "<div class=\"ds-paper-2\"><label class=\"ds-typed\"><span class=\"ds-typed-label\">Logline</span><input class=\"ds-typed-input\" placeholder=\"Not written yet\" value=\"A disgraced harbor investigator hunts the man who buried three drownings.\"></label></div>",
+      "css": ".ds-paper-2 { background: #EDE3CC; padding: 20px; } .ds-typed { display: flex; flex-direction: column; gap: 6px; } .ds-typed-label { font: 700 13px/18px 'Courier Prime', 'Courier New', monospace; color: #241E17; } .ds-typed-input { min-height: 48px; padding: 10px 4px; font: 400 16px/23px 'Courier Prime', 'Courier New', monospace; color: #241E17; background: rgba(255,250,238,0.45); border: 0; border-bottom: 1.25px solid #C4B38D; border-radius: 0; caret-color: #6B480E; outline: none; transition: border-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-typed-input::placeholder { color: #5B4F40; } .ds-typed-input::selection { background: #2B241C; color: #F4ECDA; } .ds-typed-input:hover { border-bottom-color: #4A4034; } .ds-typed-input:focus-visible { border-bottom: 2px solid #241E17; }"
+    },
+    {
+      "name": "String Nav Rail",
+      "kind": "nav",
+      "refersTo": "nav-tag",
+      "description": "Phone navigation: paper tags hanging from pins on one red string over walnut; the active tag has the red pin and bare paper, idle tags stay opaque under a warm lamp shade.",
+      "html": "<nav class=\"ds-rail\" role=\"tablist\" aria-label=\"Project areas\"><svg class=\"ds-rail-string\" viewBox=\"0 0 300 24\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M -8 8 Q 12 22 50 12 Q 100 26 150 12 Q 200 26 250 12 Q 288 22 308 8\" fill=\"none\" stroke=\"rgba(10,6,4,0.45)\" stroke-width=\"3\" transform=\"translate(1.5 3)\"/><path d=\"M -8 8 Q 12 22 50 12 Q 100 26 150 12 Q 200 26 250 12 Q 288 22 308 8\" fill=\"none\" stroke=\"#A8201A\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg><button class=\"ds-rail-item\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-pin ds-pin-brass\"></span><span class=\"ds-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" aria-hidden=\"true\"><path d=\"M4 11 12 4l8 7v9H4z\"/></svg>HOME</span></button><button class=\"ds-rail-item\" role=\"tab\" aria-selected=\"true\"><span class=\"ds-pin ds-pin-red\"></span><span class=\"ds-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" aria-hidden=\"true\"><path d=\"M4 5h7v14H4zM13 5h7v14h-7z\"/></svg>STORY</span></button><button class=\"ds-rail-item\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-pin ds-pin-brass\"></span><span class=\"ds-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"7\"/><path d=\"M9 10h.01M15 10h.01M9 15c2 1.5 4 1.5 6 0\"/></svg>REHEARSE</span></button></nav>",
+      "css": ".ds-rail { position: relative; display: flex; background: #2A1E14; padding: 6px 0 8px; box-shadow: inset 0 2px 0 rgba(0,0,0,0.6); } .ds-rail-string { position: absolute; left: 0; top: 4px; width: 100%; height: 24px; pointer-events: none; } .ds-rail-item { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; min-height: 66px; padding-top: 2px; background: none; border: 0; cursor: pointer; } .ds-pin { position: relative; z-index: 2; width: 13px; height: 13px; border-radius: 50%; box-shadow: 0 2px 2px rgba(0,0,0,0.45); } .ds-pin-brass { background: radial-gradient(circle at 35% 30%, #F1D48A, #C9A25B 55%, #7A5A22); } .ds-pin-red { width: 18px; height: 18px; background: radial-gradient(circle at 35% 30%, #F07A6C, #A8201A 55%, #5E0E0A); } .ds-tag { margin-top: -3px; padding: 11px 6px 4px; min-width: 58px; display: flex; flex-direction: column; align-items: center; gap: 1px; background-color: #EDE3CC; background-image: linear-gradient(rgba(38,26,14,.22), rgba(38,26,14,.22)); color: #241E17; border-radius: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.5); font: 700 10px/13px 'Courier Prime', 'Courier New', monospace; letter-spacing: 0.8px; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-rail-item[aria-selected=\"true\"] .ds-tag { background-image: none; } .ds-rail-item[aria-selected=\"false\"]:hover .ds-tag { background-image: linear-gradient(rgba(38,26,14,.12), rgba(38,26,14,.12)); } .ds-rail-item:focus-visible { outline: none; } .ds-rail-item:focus-visible .ds-tag { outline: 2px solid #DBB872; outline-offset: 2px; } .ds-rail-item:active .ds-tag { transform: scale(0.98); }"
+    },
+    {
+      "name": "Index Card",
+      "kind": "card",
+      "refersTo": "index-card",
+      "description": "Aged ivory pinned to cork with a lamp shadow and a hand tilt; a typed field label heads its value, never a heading.",
+      "html": "<div class=\"ds-cork\"><article class=\"ds-card\"><span class=\"ds-card-pin\" aria-hidden=\"true\"></span><h3 class=\"ds-card-title\">CATALYST</h3><p class=\"ds-card-caption\">Act I, beat 4 of 15. Debate approaching.</p><div class=\"ds-card-group\"><span class=\"ds-field-label\">Whose move</span><p class=\"ds-card-body\">The floor is open.</p></div></article></div>",
+      "css": ".ds-cork { background: #5B3F26; padding: 24px 16px; } .ds-card { position: relative; max-width: 360px; padding: 26px 16px 16px 26px; display: flex; flex-direction: column; gap: 12px; background: #EDE3CC; color: #241E17; border-radius: 2px; box-shadow: 0 3px 8px rgba(0,0,0,0.42), 0 1px 1px rgba(0,0,0,0.3); transform: rotate(-0.6deg); transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-card:hover { transform: rotate(-0.6deg) translateY(-1px); } .ds-card:focus-visible { outline: 2px solid #DBB872; outline-offset: 3px; } .ds-card:active { transform: rotate(-0.6deg) scale(0.98); } .ds-card-pin { position: absolute; left: 3px; top: 1px; width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F07A6C, #A8201A 55%, #5E0E0A); box-shadow: 0 3px 3px rgba(0,0,0,0.45); } .ds-card-title { margin: 0; font: 700 16px/22px 'Courier Prime', 'Courier New', monospace; letter-spacing: 0.3px; } .ds-card-caption { margin: -8px 0 0; font: 400 13px/18px 'Courier Prime', 'Courier New', monospace; color: #4A4034; } .ds-card-group { display: flex; flex-direction: column; gap: 4px; } .ds-field-label { font: 700 11px/14px 'Courier Prime', 'Courier New', monospace; letter-spacing: 1.2px; text-transform: uppercase; color: #4A4034; } .ds-card-body { margin: 0; font: 400 15px/22px 'Courier Prime', 'Courier New', monospace; }"
+    },
+    {
+      "name": "Blank Slip",
+      "kind": "card",
+      "refersTo": "blank-slip",
+      "description": "Where the next item goes: a blank index card lying loose on the cork, no pin, with a pencilled + label in Caveat.",
+      "html": "<div class=\"ds-cork-3\"><button class=\"ds-blank\" aria-label=\"New world rule\">+ New world rule</button></div>",
+      "css": ".ds-cork-3 { background: #5B3F26; padding: 24px 16px; } .ds-blank { display: flex; align-items: center; justify-content: center; width: 180px; min-height: 96px; padding: 12px; background: #EDE3CC; color: #241E17; border: 0; border-radius: 2px; box-shadow: 0 3px 8px rgba(0,0,0,0.42), 0 1px 1px rgba(0,0,0,0.3); font: 600 22px/24px Caveat, 'Segoe Print', cursive; text-align: center; transform: rotate(-0.55deg); cursor: pointer; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-blank:hover { transform: rotate(-0.55deg) translateY(-1px); } .ds-blank:focus-visible { outline: 2px solid #DBB872; outline-offset: 3px; } .ds-blank:active { opacity: 0.72; transition-duration: 120ms; }"
+    },
+    {
+      "name": "Rubber Stamp",
+      "kind": "chip",
+      "refersTo": "stamp",
+      "description": "Status on paper: outcome tier or canon, always carrying its word, tilted, in pressed ink (62% status colour, 38% typewriter ink) at full opacity.",
+      "html": "<div class=\"ds-paper-3\"><span class=\"ds-stamp ds-stamp-critical\">CRITICAL SUCCESS</span><span class=\"ds-stamp ds-stamp-complication\">COMPLICATION</span><span class=\"ds-stamp ds-stamp-rejected\">REJECTED</span></div>",
+      "css": ".ds-paper-3 { background: #EDE3CC; padding: 20px; display: flex; flex-wrap: wrap; gap: 12px; } .ds-stamp { display: inline-block; padding: 2px 8px; border: 1.5px solid currentColor; border-radius: 2px; font: 700 12px/16px 'Courier Prime', 'Courier New', monospace; letter-spacing: 1.2px; } .ds-stamp-critical { color: #20434E; transform: rotate(-1.4deg); } .ds-stamp-complication { color: #663C13; transform: rotate(1.1deg); } .ds-stamp-rejected { color: #4F4538; text-decoration: line-through; transform: rotate(-2deg); } .ds-stamp:focus-visible { outline: 2px solid #241E17; outline-offset: 2px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill filters and toggles on the desk; selected turns brass.",
+      "html": "<div class=\"ds-desk-3\"><button class=\"ds-chip\" aria-pressed=\"true\">All</button><button class=\"ds-chip\" aria-pressed=\"false\">Setups</button><button class=\"ds-chip\" aria-pressed=\"false\">Payoffs</button></div>",
+      "css": ".ds-desk-3 { background: #14110E; padding: 16px; display: flex; gap: 8px; } .ds-chip { min-height: 32px; padding: 0 12px; background: #1E1A16; color: #EFE7D8; border: 1px solid #3B332B; border-radius: 999px; font: 500 13px/18px system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; letter-spacing: 0.1px; cursor: pointer; transition: background 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-chip[aria-pressed=\"true\"] { background: #3A2E1A; color: #DBB872; border-color: rgba(201,162,91,0.6); } .ds-chip:hover { border-color: #968C7C; } .ds-chip:focus-visible { outline: 2px solid #DBB872; outline-offset: 2px; } .ds-chip:active { opacity: 0.72; }"
+    },
+    {
+      "name": "Tape Label",
+      "kind": "custom",
+      "refersTo": "tape-label",
+      "description": "Section heading on the board: masking tape written in marker, with a chalk aside.",
+      "html": "<div class=\"ds-cork-2\"><h2 class=\"ds-tape-row\"><span class=\"ds-tape\">Story</span><span class=\"ds-tape-aside\">where it stands</span></h2></div>",
+      "css": ".ds-cork-2 { background: #5B3F26; padding: 20px 16px; } .ds-tape-row { margin: 0; display: flex; flex-wrap: wrap; align-items: center; column-gap: 12px; row-gap: 2px; font-weight: 600; } .ds-tape { display: inline-flex; align-items: center; min-height: 34px; padding: 2px 16px; background: #D8CAA6; color: #241E17; font: 600 26px/28px Caveat, 'Segoe Print', cursive; opacity: 0.94; transform: rotate(-1.2deg); } .ds-tape-aside { font: 600 22px/24px Caveat, 'Segoe Print', cursive; color: #EFE7D8; text-shadow: 0 1px 3px rgba(8,5,3,0.75); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Screenwriter's Desk at Night",
+    "overview": "The app is a real room, not an interface in the shape of one. A warm near-black desk sits under a single lamp; above it hangs a cork board in a walnut frame. Every screen is that board: aged index cards typed in Courier Prime, pinned with red and brass push pins, joined by one red string that is both the story's causal chain and the way you move through the app. Section labels are strips of masking tape written on in marker. Characters and scenes are noir prints with handwritten captions. Nothing on the board is a flat UI card; everything is a physical object with a fastening, a slight hand-pinned tilt, and a lamp shadow under it.\n\nThe system runs on two surfaces, not two themes. The desk carries chrome in chalk on warm charcoal and the platform face (native headers, controls, the composer). Paper carries everything the story is made of, in ink and type. Components read which surface they sit on, so the same Caption is chalk on the desk and ink on a card, and a color chosen at screen scope is carried to its paper counterpart when drawn on a card. Density is that of a working board: many cards, tight typed groups inside each card, generous cork between them.\n\nThe world refuses the category default of flat cards in a tab app: navigation is a string you follow, sections are tape, status is a rubber stamp, discoveries are sticky notes. Photographs are generated and illustrative and say so in `assets/story/PROVENANCE.md`.",
+    "keyCharacteristics": [
+      "Two surfaces with paired palettes: chalk on the desk, ink on paper.",
+      "One interactive accent, brass; red belongs to the string, the pins and failure.",
+      "Courier Prime for everything typed on paper, Caveat for tape and margins, Cinzel for the wordmark alone, the platform face for chrome.",
+      "Physical depth: paper lifts off cork under one overhead lamp.",
+      "Paper is cut, not rounded; cards hang with a small deterministic tilt.",
+      "The red string connects cards in reading order and carries navigation."
+    ],
+    "rules": [
+      {
+        "name": "The Two Surfaces Rule",
+        "body": "Every color is a role on a surface. Each desk role has a paper counterpart with the same key, and a color handed from the desk to a card resolves to its paper counterpart. Never add a role to one surface only.",
+        "section": "colors"
+      },
+      {
+        "name": "The Brass Hand Rule",
+        "body": "Brass is the only interactive fill and focus color on the desk, and ink is the only interactive fill on paper. String red is never a button, link or focus color. It marks 'you are here' only as material: the red pin on the active nav tag and on the chosen discoveries tab, and the String Highlight edge on the Home filmstrip's current frame. (The direction contract named string red as the accent; the build gave interaction to brass and kept red as material. The build is the record.)",
+        "section": "colors"
+      },
+      {
+        "name": "The Faded Dye Rule",
+        "body": "Note dyes are faded, never neon. A sticky note lays its dye over paper fibre at 70%. The discovery filter tags use the same four dyes as flat fills. Stamp ink is the exception: pressed, not faded, at full opacity (see Rubber Stamps).",
+        "section": "colors"
+      },
+      {
+        "name": "The Typed Paper Rule",
+        "body": "Anything written onto paper is Courier Prime. Desk chrome (headers, controls, fields, chips, nav labels) is the platform face. Courier Prime appears on the desk only as typed story identity: the hero line, the sidebar project name, panel titles and filmstrip frame labels. Custom faces carry weight in the family name: emphasis on paper swaps to Courier Prime Bold, never a synthesized weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The Field Label Rule",
+        "body": "Small tracked capitals are the typed field headings of an index card or title page (PREMISE, THEME STATEMENT, WHOSE MOVE): each labels the value directly beneath it, or heads a section inside a card whose rows follow. A label never sits above a Title or Headline; a heading carries its own weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hand Is Annotation Rule",
+        "body": "Caveat labels, captions and asides only. Data, values and anything a user must read precisely are typed.",
+        "section": "typography"
+      },
+      {
+        "name": "The Nameplate Rule",
+        "body": "Cinzel appears only in the wordmark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Reading Order Rule",
+        "body": "The string joins cards in the order they are read. Stacked cards pin top-left and the thread hangs in the cork gutter to their left, clear of the cards; cards in a row pin at top centre and the thread sags between them.",
+        "section": "layout"
+      },
+      {
+        "name": "The Lamp Falloff Rule",
+        "body": "Light pools in the middle of the board and darkens toward the frame. The cork and its raster vignette are one fixed layer under the scrolling cards, so the falloff stays with the viewport and shades the cork, never the paper: text on paper keeps its contrast into the corners.",
+        "section": "layout"
+      },
+      {
+        "name": "The One Lamp Rule",
+        "body": "Every lift shadow falls downward with a soft blur in black (rgba(0,0,0,…)). The warm tints belong to the string shadow and the chalk halo. The string alone casts a hard offset stroke shadow (1.5px right, 3px down), because string lies on the board. No other zero-blur, sideways or colored shadows; the only glow is the bead riding the string.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Cut Paper Rule",
+        "body": "Paper takes 2px corners at most and hangs by a pin, a strip of tape, or nothing. Rounded rectangles and pills never stand in for paper.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do put every piece of content on the board on paper: an index card, slip, print, sticky note or stamp, fastened by pin, tape or nothing.",
+      "Do read the surface: chalk and the platform face for desk chrome (#14110E), ink and Courier Prime on paper (#EDE3CC).",
+      "Do keep brass (#C9A25B) as the only interactive accent on the desk and ink (#2B241C) as the interactive fill on paper.",
+      "Do join related cards with the red string in reading order, and let navigation travel along it.",
+      "Do give every outcome tier and canon status its word on a stamp as well as its color.",
+      "Do keep touch targets at 44pt, extending small controls with hit slop.",
+      "Do tilt pinned cards deterministically by key (up to ±0.8°) and hang forms and long reading square."
+    ],
+    "donts": [
+      "Don't use string red (#A8201A) for buttons, links or focus; it belongs to the string, the pins (including the pin that marks the current place) and failure.",
+      "Don't round paper past 2px, and don't use a pill as a piece of paper; pills belong only to small controls (chips, icon buttons, reaction counters), on the desk or on a card.",
+      "Don't set data or values in Caveat, or use Cinzel anywhere but the wordmark.",
+      "Don't set a tracked-capitals label above a heading; labels head values and in-card sections only.",
+      "Don't add zero-blur, sideways or colored shadows beyond the string's own stroke shadow and the bead's glow; depth comes from the one lamp overhead.",
+      "Don't use flat bordered UI cards on the cork, or textures that are not from the desk's own materials (cork, walnut, paper, tape).",
+      "Don't type text on paper lighter than pencil (#5B4F40), the lightest paper ink: it holds 5.5:1 on slip paper (#E2D5B8) and 6.2:1 on aged ivory (#EDE3CC). The lighter canon hues (#554A3C, #6A5D4C) reach paper only pressed into a stamp.",
+      "Don't mark where the next item goes with a dashed or dotted outline or an empty drop zone; it is a blank slip lying loose on the cork, or bare cork with a handwritten note. (The desk Badge's dashed and dotted outlines are canon status marks for proposed and unknown, not placeholders.)"
+    ]
+  }
+}
