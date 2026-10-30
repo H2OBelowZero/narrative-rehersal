@@ -56,7 +56,10 @@ export interface ScriptEditorProps {
 
 export function ScriptEditor({ elements, editable, revised, notes, focusedId, onFocusLine, onEdit, roomy, focusRequest }: ScriptEditorProps) {
   const inputs = useRef(new Map<string, TextInput>());
-  const [focusNext, setFocusNext] = useState<string | null>(null);
+  // A blank script opens with the caret on its first scene heading.
+  const [focusNext, setFocusNext] = useState<string | null>(() =>
+    editable && elements.length === 1 && !elements[0]!.text ? elements[0]!.id : null,
+  );
 
   useEffect(() => {
     if (!focusNext) return;
