@@ -3,12 +3,14 @@
 import { Platform, StyleSheet, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
 
 import { Caption } from '@/components/ui';
+import { useFocusPrefs } from '@/lib/focus-prefs';
 import { MAX_CONTENT_WIDTH, spacing } from '@/theme';
 
 /** Same breakpoint as the string-nav sidebar (tablets, desktop web). */
 const WIDE = 900;
 // ponytail: mirrors string-nav's SIDEBAR_WIDTH and the Screen's side padding; export them there if they drift.
 const SIDEBAR = 232;
+const SIDEBAR_FOLDED = 72;
 const GUTTERS = 32;
 /** Widest the Discover board grows on desktop; wider than reading measure because it lays cards in rows. */
 export const BOARD_MAX = 1180;
@@ -18,8 +20,9 @@ export const SIDE = 340;
 /** Whether the board is wide (sidebar layout) and how much width its content really has. */
 export function useBoard() {
   const { width } = useWindowDimensions();
+  const { navCollapsed } = useFocusPrefs();
   const wide = width >= WIDE;
-  const inner = wide ? Math.min(width - SIDEBAR - GUTTERS, BOARD_MAX) : Math.min(width - GUTTERS, MAX_CONTENT_WIDTH);
+  const inner = wide ? Math.min(width - (navCollapsed ? SIDEBAR_FOLDED : SIDEBAR) - GUTTERS, BOARD_MAX) : Math.min(width - GUTTERS, MAX_CONTENT_WIDTH);
   return { wide, inner };
 }
 

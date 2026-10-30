@@ -39,6 +39,8 @@ export interface ScreenProps {
   edges?: ('top' | 'bottom')[];
   /** Pinned below the scroll area (e.g. a composer), inside the keyboard avoidance. */
   footer?: ReactNode;
+  /** Pinned above the scroll area (e.g. an editor's tool bar); it may overhang the board (tooltips). */
+  header?: ReactNode;
   scrollRef?: Ref<ScrollView>;
   contentStyle?: StyleProp<ViewStyle>;
   /** The desk instead of the cork board (forms, settings). */
@@ -53,6 +55,7 @@ export function Screen({
   scroll = true,
   edges = [],
   footer,
+  header,
   scrollRef,
   contentStyle,
   plain = false,
@@ -132,6 +135,13 @@ export function Screen({
 
   const framed = (
     <View style={[styles.fill, framedOnDesk && [styles.desk, footer ? null : styles.deskWithProps]]} collapsable={false}>
+      {header && (
+        <SurfaceProvider surface="desk">
+          <View style={[styles.header, { borderBottomColor: desk.border, backgroundColor: desk.bg }, framedOnDesk && styles.headerOnDesk]}>
+            {header}
+          </View>
+        </SurfaceProvider>
+      )}
       {framedOnDesk ? (
         <View style={[styles.frame, paperShadow]}>
           <Image source={materials.walnut} resizeMode="repeat" style={fillImage} accessible={false} />
@@ -317,6 +327,8 @@ const styles = StyleSheet.create({
   },
   // Rests on the frame's walnut lip only: the cork above is where content scrolls.
   props: { position: 'absolute', left: spacing.sm, bottom: -10, width: 110, height: 108 },
+  header: { zIndex: 10, borderBottomWidth: StyleSheet.hairlineWidth },
+  headerOnDesk: { borderBottomWidth: 0, marginBottom: spacing.md },
   footer: {
     paddingTop: spacing.sm,
     paddingHorizontal: spacing.lg,

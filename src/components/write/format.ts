@@ -1,10 +1,11 @@
 // Write Room typing rules: how each screenplay element sits on the page, what Enter and Tab do, and the industry's
 // revision colours. Pure: no React Native components.
-import type { TextStyle, ViewStyle } from 'react-native';
-
 import type { Script, ScriptElement, ScriptElementType } from '@shared/types';
 
-import { fonts, spacing, world } from '@/theme';
+import { paginate } from '@shared/screenplay-layout';
+
+import type { IconName } from '@/components/ui';
+import { world } from '@/theme';
 
 export const ELEMENT_LABEL: Record<ScriptElementType, string> = {
   heading: 'Scene heading',
@@ -16,7 +17,28 @@ export const ELEMENT_LABEL: Record<ScriptElementType, string> = {
   shot: 'Shot',
 };
 
-/** Order of the type strip, and of Tab cycling. */
+/** What each element is for, shown in the tool bar's tooltip. */
+export const ELEMENT_USE: Record<ScriptElementType, string> = {
+  heading: 'Where and when: INT./EXT. LOCATION - TIME OF DAY.',
+  action: 'What we see, in present tense. Keep blocks to 3–4 lines.',
+  character: 'Who speaks, in capitals. Add (V.O.) or (O.S.) if heard, not seen.',
+  parenthetical: 'How a line is said, briefly, in lowercase.',
+  dialogue: 'What the character says.',
+  transition: 'How we leave the scene, flush right: CUT TO:',
+  shot: 'A specific camera angle: CLOSE ON, ANGLE ON.',
+};
+
+export const ELEMENT_ICON: Record<ScriptElementType, IconName> = {
+  heading: 'el-heading',
+  action: 'el-action',
+  character: 'el-character',
+  parenthetical: 'el-parenthetical',
+  dialogue: 'el-dialogue',
+  transition: 'el-transition',
+  shot: 'el-shot',
+};
+
+/** Order of the type bar, of Tab cycling, and of the Alt+1–7 shortcuts (as screenwriting software numbers them). */
 export const ELEMENT_ORDER: ScriptElementType[] = ['heading', 'action', 'character', 'parenthetical', 'dialogue', 'transition', 'shot'];
 
 export const PLACEHOLDER: Record<ScriptElementType, string> = {
@@ -54,37 +76,16 @@ export function inferType(type: ScriptElementType, text: string): ScriptElementT
   return type;
 }
 
+/** "Alt+1" on Windows and Linux, "⌥1" on a Mac. */
+export function shortcutLabel(key: string): string {
+  const mac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform ?? '');
+  return mac ? `⌥${key}` : `Alt+${key}`;
+}
+
 export const cycleType = (type: ScriptElementType, by = 1): ScriptElementType =>
   ELEMENT_ORDER[(ELEMENT_ORDER.indexOf(type) + by + ELEMENT_ORDER.length) % ELEMENT_ORDER.length]!;
 
 export const newElementId = (): string => `el_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
-
-export const TEXT: Record<ScriptElementType, TextStyle> = {
-  heading: { fontFamily: fonts.typewriterBold },
-  action: {},
-  character: { textAlign: 'center' },
-  parenthetical: {},
-  dialogue: {},
-  transition: { textAlign: 'right' },
-  shot: { fontFamily: fonts.typewriterBold },
-};
-
-/** Space above each element, as on a typed page. */
-export const GAP: Record<ScriptElementType, number> = {
-  heading: spacing.xl,
-  action: spacing.md,
-  character: spacing.lg,
-  parenthetical: 0,
-  dialogue: 0,
-  transition: spacing.lg,
-  shot: spacing.lg,
-};
-
-/** Proportional indents keep dialogue readable at phone width and still look like a page on tablets. */
-export const INDENT: Partial<Record<ScriptElementType, ViewStyle>> = {
-  parenthetical: { marginLeft: '18%', marginRight: '14%' },
-  dialogue: { marginLeft: '10%', marginRight: '8%' },
-};
 
 // ───────── Revisions ─────────
 
@@ -111,27 +112,8 @@ export function revisionColor(number: number): { name: string; paper: string } {
 export const latestRevision = (script: Script) => script.revisions.at(-1);
 export const pendingChanges = (script: Script) => script.changes.filter((c) => c.revision === undefined);
 
-// ───────── Length ─────────
-
-/** Typed characters per line for each element on a US Letter page in 12pt Courier. */
-const WIDTH: Record<ScriptElementType, number> = {
-  heading: 60,
-  action: 60,
-  character: 38,
-  parenthetical: 25,
-  dialogue: 35,
-  transition: 15,
-  shot: 60,
-};
-
-// ponytail: line-count estimate (55 lines a page), not true pagination; fine for a "~N pages" readout.
-export function pageCount(elements: ScriptElement[]): number {
-  let lines = 0;
-  for (const el of elements) {
-    lines += (GAP[el.type] ? 1 : 0) + Math.max(1, Math.ceil(el.text.length / WIDTH[el.type]));
-  }
-  return Math.max(1, Math.round(lines / 55));
-}
+/** Printed pages at the standard 54 lines a page. */
+export const pageCount = (elements: ScriptElement[]) => paginate(elements).pages;
 
 export const sceneCount = (elements: ScriptElement[]) => elements.filter((e) => e.type === 'heading' && e.text.trim()).length;
 

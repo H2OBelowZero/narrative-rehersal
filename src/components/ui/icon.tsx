@@ -56,6 +56,18 @@ export const icons = {
   search: { ios: 'magnifyingglass', android: 'search' },
   more: { ios: 'ellipsis', android: 'more_horiz' },
   dot: { ios: 'circle.fill', android: 'fiber_manual_record' },
+  // Screenplay elements (the Write room's type bar).
+  'el-heading': { ios: 'mappin.and.ellipse', android: 'location_on' },
+  'el-action': { ios: 'text.alignleft', android: 'subject' },
+  'el-character': { ios: 'person.fill', android: 'person' },
+  'el-parenthetical': { ios: 'waveform', android: 'record_voice_over' },
+  'el-dialogue': { ios: 'text.bubble', android: 'chat_bubble' },
+  'el-transition': { ios: 'arrow.right.to.line', android: 'keyboard_tab' },
+  'el-shot': { ios: 'camera.viewfinder', android: 'videocam' },
+  'sidebar-left': { ios: 'sidebar.left', android: 'left_panel_close' },
+  'sidebar-left-open': { ios: 'sidebar.left', android: 'left_panel_open' },
+  'sidebar-right': { ios: 'sidebar.right', android: 'right_panel_close' },
+  'sidebar-right-open': { ios: 'sidebar.right', android: 'right_panel_open' },
 } as const satisfies Record<string, IconDef>;
 
 export type IconName = keyof typeof icons;

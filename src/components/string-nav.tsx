@@ -15,6 +15,7 @@ import { STC_BEATS } from '@shared/structure';
 import { fillImage, materials } from '@/components/board/materials';
 import { Pin, Thread } from '@/components/board/string-board';
 import { Icon, haptics, pressedStyle, type IconName } from '@/components/ui';
+import { useFocusPrefs } from '@/lib/focus-prefs';
 import { useProject } from '@/lib/session';
 import { fonts, handType, palettes, spacing, SurfaceProvider, TOUCH_TARGET, world } from '@/theme';
 
@@ -124,6 +125,8 @@ function Rail({ children, style: _style, ...props }: TabListProps) {
 // ───────── Wide: the sidebar ─────────
 
 const SIDEBAR_WIDTH = 232;
+/** Folded: just the string, its pins and the area icons. */
+const SIDEBAR_FOLDED = 72;
 const ITEM_HEIGHT = 52;
 const SIDEBAR_STRING_X = 30;
 
@@ -131,37 +134,60 @@ function Sidebar({ children, style: _style, ...props }: TabListProps) {
   const insets = useSafeAreaInsets();
   const active = useActiveIndex();
   const { project, sim } = useProject();
+  const { navCollapsed: folded, setFocusPrefs } = useFocusPrefs();
+  const width = folded ? SIDEBAR_FOLDED : SIDEBAR_WIDTH;
   const pins = TABS.map((_, i) => ({ x: SIDEBAR_STRING_X, y: ITEM_HEIGHT * (i + 0.5) }));
   const beat = sim ? sim.beatIndex + 1 : 0;
 
   return (
-    <View {...props} style={[styles.sidebar, { paddingTop: insets.top + spacing.lg, paddingBottom: insets.bottom + spacing.lg }]}>
+    <View {...props} style={[styles.sidebar, { width, paddingTop: insets.top + spacing.sm, paddingBottom: insets.bottom + spacing.lg }]}>
       <Pressable
-        onPress={() => router.dismissTo('/')}
-        accessibilityRole="link"
-        accessibilityLabel="All projects"
-        style={({ pressed }) => [styles.brand, pressedStyle(pressed)]}>
-        <Text style={[handType.wordmark, styles.wordmarkSmall]}>THE</Text>
-        <Text style={[handType.wordmark, styles.wordmark]}>STORY DESK</Text>
+        onPress={() => setFocusPrefs({ navCollapsed: !folded })}
+        accessibilityRole="button"
+        accessibilityLabel={folded ? 'Expand the sidebar' : 'Collapse the sidebar'}
+        accessibilityState={{ expanded: !folded }}
+        style={({ pressed }) => [styles.fold, folded && styles.foldFolded, pressedStyle(pressed)]}>
+        <Icon name={folded ? 'sidebar-left-open' : 'sidebar-left'} size={18} color={desk.textSecondary} />
       </Pressable>
-      <Pressable
-        onPress={() => router.dismissTo('/')}
-        accessibilityRole="link"
-        accessibilityLabel="Back to all projects"
-        style={({ pressed }) => [styles.project, pressedStyle(pressed)]}>
-        <Icon name="back" size={14} color={desk.textSecondary} />
-        <Text numberOfLines={1} style={styles.projectTitle}>
-          {project?.model.title ?? 'Projects'}
-        </Text>
-      </Pressable>
+      {!folded && (
+        <Pressable
+          onPress={() => router.dismissTo('/')}
+          accessibilityRole="link"
+          accessibilityLabel="All projects"
+          style={({ pressed }) => [styles.brand, pressedStyle(pressed)]}>
+          <Text style={[handType.wordmark, styles.wordmarkSmall]}>THE</Text>
+          <Text style={[handType.wordmark, styles.wordmark]}>STORY DESK</Text>
+        </Pressable>
+      )}
+      {!folded && (
+        <Pressable
+          onPress={() => router.dismissTo('/')}
+          accessibilityRole="link"
+          accessibilityLabel="Back to all projects"
+          style={({ pressed }) => [styles.project, pressedStyle(pressed)]}>
+          <Icon name="back" size={14} color={desk.textSecondary} />
+          <Text numberOfLines={1} style={styles.projectTitle}>
+            {project?.model.title ?? 'Projects'}
+          </Text>
+        </Pressable>
+      )}
+      {folded && (
+        <Pressable
+          onPress={() => router.dismissTo('/')}
+          accessibilityRole="link"
+          accessibilityLabel="Back to all projects"
+          style={({ pressed }) => [styles.fold, styles.foldFolded, pressedStyle(pressed)]}>
+          <Icon name="back" size={18} color={desk.textSecondary} />
+        </Pressable>
+      )}
 
       <View accessibilityRole="tablist" style={styles.sideTags}>
         <View pointerEvents="none" style={StyleSheet.absoluteFill}>
           {/* Shifted up so the thread's overhang above the first pin is drawn, not clipped. */}
           <Svg
-            width={SIDEBAR_WIDTH}
+            width={width}
             height={ITEM_HEIGHT * TABS.length + 36}
-            viewBox={`0 -12 ${SIDEBAR_WIDTH} ${ITEM_HEIGHT * TABS.length + 36}`}
+            viewBox={`0 -12 ${width} ${ITEM_HEIGHT * TABS.length + 36}`}
             style={styles.sideThread}>
             <Thread minBow={0} points={[{ x: SIDEBAR_STRING_X - 6, y: -12 }, ...pins, { x: SIDEBAR_STRING_X - 6, y: ITEM_HEIGHT * TABS.length + 20 }]} />
           </Svg>
@@ -170,7 +196,7 @@ function Sidebar({ children, style: _style, ...props }: TabListProps) {
         {children}
       </View>
 
-      {sim && (
+      {sim && !folded && (
         <View style={styles.progress} accessible accessibilityLabel={`Story progress: beat ${beat} of ${STC_BEATS.length}`}>
           <Text style={styles.progressLabel}>STORY PROGRESS</Text>
           <View style={styles.progressTrack}>
@@ -181,7 +207,7 @@ function Sidebar({ children, style: _style, ...props }: TabListProps) {
           </Text>
         </View>
       )}
-      <Text style={styles.motto}>Run the story before you make the story.</Text>
+      {!folded && <Text style={styles.motto}>Run the story before you make the story.</Text>}
     </View>
   );
 }
@@ -213,6 +239,7 @@ function Bead({ points, active, axis }: { points: { x: number; y: number }[]; ac
 }
 
 function Tag({ children, isFocused, icon, index, wide, style: _style, ...props }: TabTriggerSlotProps & { icon: IconName; index: number; wide: boolean }) {
+  const { navCollapsed: folded } = useFocusPrefs();
   const swing = useSharedValue(0);
   useEffect(() => {
     if (isFocused) swing.set(withSequence(withTiming(lastDirection * -5, { duration: 1 }), withSpring(0, { damping: 9, stiffness: 180 })));
@@ -241,7 +268,7 @@ function Tag({ children, isFocused, icon, index, wide, style: _style, ...props }
             <Pin kind={isFocused ? 'red' : 'brass'} size={isFocused ? 20 : 15} />
           </View>
           <Icon name={icon} size={17} color={isFocused ? desk.text : desk.textSecondary} />
-          <Text style={[styles.sideLabel, { color: isFocused ? desk.text : desk.textSecondary }]}>{label}</Text>
+          {!folded && <Text style={[styles.sideLabel, { color: isFocused ? desk.text : desk.textSecondary }]}>{label}</Text>}
         </>
       ) : (
         <>
@@ -328,6 +355,8 @@ const styles = StyleSheet.create({
     gap: spacing.xl,
   },
   brand: { alignItems: 'center', minHeight: TOUCH_TARGET, justifyContent: 'center' },
+  fold: { alignSelf: 'flex-end', width: TOUCH_TARGET, height: TOUCH_TARGET, alignItems: 'center', justifyContent: 'center', marginBottom: -spacing.lg },
+  foldFolded: { alignSelf: 'center', marginBottom: 0 },
   wordmarkSmall: { color: desk.textSecondary, fontSize: 11, lineHeight: 14, letterSpacing: 3 },
   wordmark: { color: desk.text },
   project: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, minHeight: TOUCH_TARGET },

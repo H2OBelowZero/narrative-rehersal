@@ -1,18 +1,21 @@
 // One script on the desk: the typed page to write on, and beside it (in a sheet on phones) its revisions, the changes
 // made since the last one and by whom, and the notes left on its lines.
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
-import { Platform, StyleSheet, TextInput, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { Platform, StyleSheet, TextInput, View, useWindowDimensions } from 'react-native';
 
+import { printed } from '@shared/screenplay-layout';
 import type { Script, ScriptElementType } from '@shared/types';
 
 import { BlindLock, useBlindSession } from '@/components/discover/blind-lock';
 import { BOARD_MAX, SIDE, useBoard } from '@/components/discover/board-bits';
-import { clockTime, latestRevision, pageCount, pendingChanges, revisionColor, UPPER } from '@/components/write/format';
-import { ScriptEditor, TypeStrip } from '@/components/write/script-editor';
+import { clockTime, ELEMENT_ORDER, latestRevision, pageCount, pendingChanges, revisionColor, UPPER } from '@/components/write/format';
+import { ScriptEditor } from '@/components/write/script-editor';
+import { ScriptToolbar } from '@/components/write/script-toolbar';
 import { ScriptPanel, type PanelTab } from '@/components/write/script-panel';
 import { useScriptDraft, type SaveState } from '@/components/write/use-script-draft';
 import { Button, Caption, Card, EmptyState, IconButton, Screen, Sheet } from '@/components/ui';
+import { useFocusPrefs } from '@/lib/focus-prefs';
 import { useProject } from '@/lib/session';
 import { fonts, palettes, spacing } from '@/theme';
 
@@ -52,16 +55,22 @@ function ScriptDesk({ script }: { script: Script }) {
   const [anchorId, setAnchorId] = useState<string | null>(null);
   const [panelOpen, setPanelOpen] = useState(false);
   const [focusRequest, setFocusRequest] = useState<{ id: string; at: number } | null>(null);
+  const { panelCollapsed, navCollapsed, setFocusPrefs } = useFocusPrefs();
+  const { width: windowWidth } = useWindowDimensions();
+  // The page is laid out from the width it really gets, so its columns wrap exactly where the pagination counts.
+  const [measured, setMeasured] = useState(0);
+  const side = wide && !panelCollapsed;
 
   const revised = new Set(pendingChanges(script).map((c) => c.elementId));
   const notes = new Map<string, number>();
   for (const c of script.comments) if (!c.resolved && c.elementId) notes.set(c.elementId, (notes.get(c.elementId) ?? 0) + 1);
   const focused = draft.elements.find((e) => e.id === focusedId) ?? null;
-  const pageWidth = wide ? inner - SIDE - spacing.xl : inner;
+  const pageWidth = measured || (side ? inner - SIDE - spacing.xl : inner);
+  const togglePanel = () => setFocusPrefs({ panelCollapsed: !panelCollapsed });
 
   const retype = (type: ScriptElementType) => {
     if (!focused) return;
-    const text = UPPER.has(type) ? focused.text.toUpperCase() : focused.text;
+    const text = UPPER.has(type) ? focused.text.toUpperCase() : type === 'parenthetical' ? printed({ type, text: focused.text }) : focused.text;
     draft.edit(draft.elements.map((e) => (e.id === focused.id ? { ...e, type, text } : e)), [focused.id]);
     setFocusRequest({ id: focused.id, at: Date.now() }); // web blurs the line when a chip is clicked
   };
@@ -95,6 +104,28 @@ function ScriptDesk({ script }: { script: Script }) {
     />
   );
 
+  // Keyboard shortcuts on the web: Alt+1–7 sets the line's type, Alt+N notes it, Alt+P shows or hides the panel.
+  const shortcuts = useRef({ retype, noteOnLine, togglePanel, wide });
+  useEffect(() => {
+    shortcuts.current = { retype, noteOnLine, togglePanel, wide };
+  });
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    const onKey = (e: KeyboardEvent) => {
+      if (!e.altKey || e.ctrlKey || e.metaKey) return;
+      const s = shortcuts.current;
+      const digit = /^Digit([1-7])$/.exec(e.code);
+      if (digit) s.retype(ELEMENT_ORDER[Number(digit[1]) - 1]!);
+      else if (e.code === 'KeyN') s.noteOnLine();
+      else if (e.code === 'KeyP' && s.wide) s.togglePanel();
+      else return;
+      e.preventDefault();
+    };
+    // Capture phase: react-native-web's TextInput stops keydown from bubbling out of the line being typed.
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  }, []);
+
   const page = (
     <ScriptEditor
       elements={draft.elements}
@@ -104,7 +135,7 @@ function ScriptDesk({ script }: { script: Script }) {
       focusedId={focusedId}
       onFocusLine={setFocusedId}
       onEdit={draft.edit}
-      roomy={pageWidth >= 620}
+      width={pageWidth}
       focusRequest={focusRequest}
     />
   );
@@ -113,7 +144,18 @@ function ScriptDesk({ script }: { script: Script }) {
     <Screen
       keyboard
       contentStyle={wide ? styles.wideBoard : undefined}
-      footer={editable && focused ? <TypeStrip type={focused.type} onType={retype} onNote={noteOnLine} /> : undefined}>
+      header={
+        editable ? (
+          <ScriptToolbar
+            type={focused?.type ?? null}
+            onType={retype}
+            onNote={noteOnLine}
+            wide={wide}
+            labels={windowWidth - (navCollapsed ? 72 : 232) >= 1040}
+            panel={wide ? { collapsed: panelCollapsed, onToggle: togglePanel } : undefined}
+          />
+        ) : undefined
+      }>
       <Stack.Screen
         options={{
           title: draft.title || 'Untitled',
@@ -129,16 +171,16 @@ function ScriptDesk({ script }: { script: Script }) {
         }}
       />
       <TitleCard script={script} title={draft.title} onTitle={draft.setTitle} editable={editable} elements={draft.elements.length} onPanel={openPanel} wide={wide} />
-      {wide ? (
-        <View style={styles.wideRow}>
-          <View style={styles.pageColumn}>{page}</View>
+      <View style={styles.wideRow}>
+        <View style={styles.pageColumn} onLayout={(e) => setMeasured(Math.floor(e.nativeEvent.layout.width))}>
+          {page}
+        </View>
+        {side && (
           <View style={[styles.side, { width: SIDE }]}>
             <Card tilt={false}>{panel}</Card>
           </View>
-        </View>
-      ) : (
-        page
-      )}
+        )}
+      </View>
       {!wide && (
         <Sheet visible={panelOpen} onClose={() => setPanelOpen(false)} title={draft.title || 'Script'}>
           {panel}
@@ -230,7 +272,7 @@ const desk = palettes.desk;
 const styles = StyleSheet.create({
   wideBoard: { maxWidth: BOARD_MAX },
   wideRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.xl },
-  pageColumn: { flex: 1, minWidth: 0, maxWidth: 820 },
+  pageColumn: { flex: 1, minWidth: 0 },
   side: { gap: spacing.xl, ...(Platform.OS === 'web' ? ({ position: 'sticky', top: spacing.lg } as object) : null) },
   headerRight: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
   status: { color: desk.textSecondary, fontStyle: 'italic', marginRight: spacing.xs },
