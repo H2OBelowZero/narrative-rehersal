@@ -5,7 +5,7 @@ import { Platform, Share, StyleSheet, View } from 'react-native';
 
 import { Stamp } from '@/components/board/paper';
 import { CardTitle } from '@/components/rehearse/scene-cards';
-import { Body, Button, Caption, Card, confirm, Eyebrow, Mono, Section, SegmentedControl, showToast } from '@/components/ui';
+import { Body, Button, Caption, Card, confirm, Eyebrow, Mono, Section, SegmentedControl, showToast, Term } from '@/components/ui';
 import { errorMessage, timeAgo } from '@/lib/format';
 import { useProject, useSession } from '@/lib/session';
 import { useNow } from '@/lib/use-now';
@@ -111,7 +111,11 @@ export function SessionCard() {
           <Body strong>Blind session</Body>
           <Stamp label={blind ? 'Blind' : 'Open'} color={blind ? ink.accentText : ink.textTertiary} />
         </View>
-        <Caption>{BLIND_EXPLANATION}</Caption>
+        <View style={styles.terms} accessible accessibilityLabel={BLIND_EXPLANATION}>
+          <Term icon="eye-off" text="Performers see only their own brief" spoken="Performers see only their own brief" />
+          <Term icon="question" text="Nobody is told the answer" spoken="Nobody is told the answer" />
+          <Term icon="graph" text="Afterwards: compare written, played and felt" spoken="Afterwards: compare written, played and felt" />
+        </View>
         {manage && (
           <SegmentedControl
             accessibilityLabel="Blind session"
@@ -210,4 +214,5 @@ const styles = StyleSheet.create({
   elapsed: { fontVariant: ['tabular-nums'] },
   rowWrap: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: spacing.sm },
   blind: { gap: spacing.sm, padding: spacing.md },
+  terms: { gap: spacing.xs },
 });

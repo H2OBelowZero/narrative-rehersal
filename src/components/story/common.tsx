@@ -17,7 +17,7 @@ import { CANON_LABEL, CANON_STATUSES } from '@shared/structure';
 import type { CanonStatus, Character, CharacterRole } from '@shared/types';
 
 import { characterImage, fillImage } from '@/components/board/materials';
-import { Body, Caption, CanonBadge, Chip, Eyebrow, pressedStyle } from '@/components/ui';
+import { Body, Caption, CanonBadge, Chip, Eyebrow, Icon, type IconName, pressedStyle } from '@/components/ui';
 import { errorMessage } from '@/lib/format';
 import { useProject } from '@/lib/session';
 import { alpha, fonts, spacing, useTheme } from '@/theme';
@@ -181,10 +181,14 @@ export function Row({
 }
 
 /** Label/value line for dense administrative blocks. */
-export function KeyValue({ label, children }: { label: string; children: ReactNode }) {
+export function KeyValue({ label, icon, children }: { label: string; icon?: IconName; children: ReactNode }) {
+  const { colors } = useTheme();
   return (
     <View style={styles.kv}>
-      <Caption style={styles.kvLabel}>{label}</Caption>
+      <View style={[styles.kvLabel, styles.kvLabelRow]}>
+        {icon && <Icon name={icon} size={14} color={colors.textSecondary} />}
+        <Caption>{label}</Caption>
+      </View>
       <View style={styles.kvValue}>{typeof children === 'string' ? <Body>{children}</Body> : children}</View>
     </View>
   );
@@ -266,6 +270,7 @@ export const storyStyles = StyleSheet.create({
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   kv: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
   kvLabel: { width: 128, paddingTop: 3 },
+  kvLabelRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, alignSelf: 'flex-start' },
   kvValue: { flex: 1 },
   bullet: { flexDirection: 'row', gap: spacing.sm },
   legendRow: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: spacing.md, rowGap: spacing.xxs },

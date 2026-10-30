@@ -1,5 +1,5 @@
 import { SymbolView, type SymbolViewProps } from 'expo-symbols';
-import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
+import { View, type ColorValue, type StyleProp, type ViewStyle } from 'react-native';
 
 import { onSurface, useTheme } from '@/theme';
 
@@ -56,6 +56,23 @@ export const icons = {
   search: { ios: 'magnifyingglass', android: 'search' },
   more: { ios: 'ellipsis', android: 'more_horiz' },
   dot: { ios: 'circle.fill', android: 'fiber_manual_record' },
+  'chevron-down': { ios: 'chevron.down', android: 'expand_more' },
+  // The fifteen Save the Cat beats, one mark each (keyed by beat key, see beatIcon).
+  'beat-opening-image': { ios: 'camera.aperture', android: 'photo_camera' },
+  'beat-theme-stated': { ios: 'quote.bubble', android: 'format_quote' },
+  'beat-set-up': { ios: 'building.2', android: 'location_city' },
+  'beat-catalyst': { ios: 'bolt', android: 'bolt' },
+  'beat-debate': { ios: 'arrow.left.arrow.right', android: 'compare_arrows' },
+  'beat-break-into-two': { ios: 'door.left.hand.open', android: 'door_open' },
+  'beat-b-story': { ios: 'heart', android: 'favorite' },
+  'beat-fun-and-games': { ios: 'sparkles', android: 'auto_awesome' },
+  'beat-midpoint': { ios: 'circle.lefthalf.filled', android: 'contrast' },
+  'beat-bad-guys-close-in': { ios: 'exclamationmark.shield', android: 'gpp_maybe' },
+  'beat-all-is-lost': { ios: 'heart.slash', android: 'heart_broken' },
+  'beat-dark-night-of-the-soul': { ios: 'moon.stars', android: 'dark_mode' },
+  'beat-break-into-three': { ios: 'lightbulb.max', android: 'emoji_objects' },
+  'beat-finale': { ios: 'flag.checkered', android: 'sports_score' },
+  'beat-final-image': { ios: 'photo', android: 'image' },
   // Screenplay elements (the Write room's type bar).
   'el-heading': { ios: 'mappin.and.ellipse', android: 'location_on' },
   'el-action': { ios: 'text.alignleft', android: 'subject' },
@@ -71,6 +88,21 @@ export const icons = {
 } as const satisfies Record<string, IconDef>;
 
 export type IconName = keyof typeof icons;
+
+/** A beat's mark, falling back to the structure icon for a key without one. */
+export const beatIcon = (key: string): IconName => (`beat-${key}` in icons ? (`beat-${key}` as IconName) : 'structure');
+
+/** An icon inked into the card inside a square stamp outline (beat marks, the discovery count). */
+export function InkMark({ name, size = 44 }: { name: IconName; size?: number }) {
+  const { colors } = useTheme();
+  return (
+    <View style={[markStyle, { width: size, height: size, borderColor: colors.text }]}>
+      <Icon name={name} size={Math.round(size * 0.55)} color={colors.text} />
+    </View>
+  );
+}
+
+const markStyle: ViewStyle = { borderWidth: 1.5, borderRadius: 2, alignItems: 'center', justifyContent: 'center', flexShrink: 0 };
 
 export interface IconProps {
   name: IconName;
