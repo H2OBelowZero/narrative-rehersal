@@ -9,7 +9,7 @@ import { DOMAIN_LABEL, RISK_LABEL } from '@shared/structure';
 import type { Approach, PendingAction, Risk } from '@shared/types';
 
 import { Paper, paperShadow, Pinned, StickyNote, TapeLabel } from '@/components/board/paper';
-import { Badge, Body, Button, Caption, Card, EASE_OUT, OddsBar, PressableScale, RiskBadge } from '@/components/ui';
+import { Badge, Body, Button, Caption, Card, EASE_OUT, OddsBar, PressableScale, RiskBadge, Term } from '@/components/ui';
 import { useProject } from '@/lib/session';
 import { alpha, fonts, palettes, radii, spacing, useTheme } from '@/theme';
 
@@ -235,7 +235,7 @@ export function YourMove({ characterId }: { characterId: string }) {
     <Animated.View entering={rise()}>
       <Card tone="accent" tilt="your-move" style={styles.yourMove}>
         <CardTitle>{`Your move, ${name}`}</CardTitle>
-        <Body tone="secondary">Choose from moves shaped by what’s at stake, or say it in your own words below.</Body>
+        <Term icon="dice" text="Pick a move, or say it your own way below" spoken="Choose from moves shaped by what’s at stake, or say it in your own words below." />
         <Button title={`Show ${name}’s choices`} icon="dice" onPress={() => void ask()} />
       </Card>
     </Animated.View>

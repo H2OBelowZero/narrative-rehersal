@@ -157,3 +157,18 @@ const styles = StyleSheet.create({
   centre: { textAlign: 'center' },
   emptyAction: { alignSelf: 'center', marginTop: spacing.sm },
 });
+
+/** A short term with its mark: what would be a sentence, read at a glance. The full sentence is spoken. */
+export function Term({ icon, text, spoken }: { icon: IconName; text: string; spoken: string }) {
+  const { colors } = useTheme();
+  return (
+    <View style={termStyle} accessible accessibilityLabel={spoken}>
+      <Icon name={icon} size={14} color={colors.textSecondary} />
+      <Caption tone="primary" style={{ flexShrink: 1 }}>
+        {text}
+      </Caption>
+    </View>
+  );
+}
+
+const termStyle: ViewStyle = { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, flexShrink: 1 };

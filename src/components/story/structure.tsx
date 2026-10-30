@@ -17,6 +17,7 @@ import {
   Body,
   Button,
   Caption,
+  beatIcon,
   Card,
   Chip,
   confirm,
@@ -25,6 +26,7 @@ import {
   Heading,
   Icon,
   IconButton,
+  InkMark,
   Mono,
   pressedStyle,
   ProgressBar,
@@ -274,10 +276,13 @@ function BeatFace({ facts, active, options }: { facts: BeatFacts; active: boolea
   const total = def.requirements.length;
   return (
     <>
-      <Caption strong tone="primary" numberOfLines={2} style={styles.beatTitle}>
-        {index + 1}. {def.name.toUpperCase()}
-      </Caption>
-      <Caption numberOfLines={5} style={styles.beatPurpose}>
+      <View style={storyStyles.row}>
+        <InkMark name={beatIcon(def.key)} size={28} />
+        <Caption strong tone="primary" numberOfLines={2} style={[styles.beatTitle, storyStyles.grow]}>
+          {index + 1}. {def.name.toUpperCase()}
+        </Caption>
+      </View>
+      <Caption numberOfLines={3} style={styles.beatPurpose}>
         {def.purpose}
       </Caption>
       <Caption tone="tertiary" numberOfLines={1} style={[styles.tabular, styles.beatAt]}>
@@ -388,6 +393,7 @@ function BeatDetail({ beatKey, onFollow }: { beatKey: StcBeatKey; onFollow: (key
       )}
 
       <View style={storyStyles.row}>
+        <InkMark name={beatIcon(def.key)} size={36} />
         <Caption style={[storyStyles.grow, styles.tabular]}>
           Act {ACT[def.act]} · at {def.at}
         </Caption>

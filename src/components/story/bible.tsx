@@ -16,6 +16,7 @@ import {
   CanonBadge,
   Chip,
   confirm,
+  type IconName,
   Section,
   Sheet,
   TextField,
@@ -70,6 +71,13 @@ const FIELDS: { key: ModelField; label: string; multiline?: boolean; helper?: st
 ];
 
 const FACTS: ModelField[] = ['genre', 'medium', 'tone', 'audience', 'targetDuration'];
+const FACT_ICON: Partial<Record<ModelField, IconName>> = {
+  genre: 'film',
+  medium: 'script',
+  tone: 'el-parenthetical',
+  audience: 'crew',
+  targetDuration: 'clock',
+};
 const labelOf = (key: ModelField) => FIELDS.find((f) => f.key === key)!.label;
 
 const CANON_KINDS: { kind: CanonKind; title: string; label: string }[] = [
@@ -189,7 +197,7 @@ function TitlePageFace({ model }: { model: StoryModel }) {
       <Prose label="Premise" value={model.premise} />
       <View style={[styles.particulars, { borderTopColor: colors.separator }]}>
         {FACTS.map((key) => (
-          <KeyValue key={key} label={labelOf(key)}>
+          <KeyValue key={key} label={labelOf(key)} icon={FACT_ICON[key]}>
             {model[key] ? (
               <Body>{model[key]}</Body>
             ) : (

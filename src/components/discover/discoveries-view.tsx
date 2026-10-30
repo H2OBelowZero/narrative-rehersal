@@ -8,7 +8,7 @@ import type { Discovery, DiscoveryKind, Project } from '@shared/types';
 import { fillImage, materials } from '@/components/board/materials';
 import { Hand, paperShadow, tiltFor, type NoteColor } from '@/components/board/paper';
 import { Pin } from '@/components/board/string-board';
-import { Button, Caption, Card, EmptyState, haptics, Heading, pressedStyle, showToast } from '@/components/ui';
+import { Button, Caption, Card, EmptyState, haptics, Heading, InkMark, pressedStyle, showToast } from '@/components/ui';
 import { DISCOVERY_KIND_LABEL } from '@/lib/format';
 import { useProject } from '@/lib/session';
 import { fonts, palettes, spacing, TOUCH_TARGET, world } from '@/theme';
@@ -106,7 +106,8 @@ export function DiscoveriesView() {
   return (
     <View style={styles.wideRow}>
       <View style={styles.main}>
-        <NorthStar project={project} wide />
+        {/* Side by side only when the column has room for the count beside the button. */}
+        <NorthStar project={project} wide={main >= 560} />
         {board}
       </View>
       {side ? <View style={[styles.side, { width: SIDE }]}>{side}</View> : null}
@@ -137,14 +138,16 @@ function NorthStar({ project, wide = false }: { project: Project; wide?: boolean
   return (
     <Card tone="accent" tilt={false}>
       <View style={wide ? styles.northWide : styles.northStack}>
-        <View style={[styles.northText, wide && styles.grow]}>
-          <Heading>
-            {thisSession === null ? 'No session running' : `${thisSession} meaningful ${thisSession === 1 ? 'discovery' : 'discoveries'} this session`}
-          </Heading>
-          <Caption>
-            {meaningful.length} across the project so far, counted when the team is considering a discovery or has
-            promoted it.
-          </Caption>
+        <View style={[styles.tally, wide && styles.grow]}>
+          <InkMark name="discover" />
+          <View style={[styles.northText, styles.grow]}>
+            <Heading>
+              {thisSession === null ? 'No session running' : `${thisSession} meaningful ${thisSession === 1 ? 'discovery' : 'discoveries'} this session`}
+            </Heading>
+            <Caption accessibilityLabel={`${meaningful.length} across the project, counted when the team is considering or promoted a discovery.`}>
+              {meaningful.length} across the project · considering or promoted
+            </Caption>
+          </View>
         </View>
         {can('analyze') && (
           <View style={[styles.tight, wide && styles.northAction]}>

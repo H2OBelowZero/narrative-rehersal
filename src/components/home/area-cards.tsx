@@ -13,12 +13,15 @@ import { followString, type TabName } from '@/components/string-nav';
 import {
   Avatar,
   Badge,
+  beatIcon,
   Body,
   Caption,
   Card,
   Eyebrow,
   Heading,
   Icon,
+  Term,
+  InkMark,
   List,
   ListRow,
   Mono,
@@ -133,17 +136,20 @@ function Structure() {
 
   return (
     <>
-      <View style={styles.tight}>
-        <Heading style={styles.beatName}>{def.name.toUpperCase()}</Heading>
-        <Caption>
-          Act {ACT[def.act]}, beat {sim.beatIndex + 1} of {STC_BEATS.length}.{next ? ` ${next.name} approaching.` : ''}
-        </Caption>
+      <View style={styles.beatHead}>
+        <InkMark name={beatIcon(def.key)} />
+        <View style={[styles.grow, styles.tight]}>
+          <Heading style={styles.beatName}>{def.name.toUpperCase()}</Heading>
+          <Caption>
+            Act {ACT[def.act]} · beat {sim.beatIndex + 1} of {STC_BEATS.length}
+          </Caption>
+        </View>
       </View>
       <Filmstrip index={sim.beatIndex} satisfied={state.status === 'satisfied'} name={def.name} />
       <Body tone="secondary">{def.purpose}</Body>
 
       <View style={styles.tight}>
-        <Eyebrow>Required dramatic movement</Eyebrow>
+        <Eyebrow>To land this beat</Eyebrow>
         {def.requirements.map((r) => (
           <View key={r.id} style={styles.requirement}>
             <View style={styles.requirementIcon}>
@@ -160,17 +166,26 @@ function Structure() {
         ))}
       </View>
 
-      <Caption>
-        {sequence
-          ? `Hero goal sequence ${sequence.number} of a typical ${HGS_GUIDE.total[0]}-${HGS_GUIDE.total[1]}. `
-          : 'No hero goal sequence is open. '}
-        {`Act ${ACT[def.act]} has ${actSequences} so far, about ${ACT_GUIDE[def.act]} is usual.`}
-      </Caption>
+      <View style={styles.terms}>
+        <Term
+          icon="target"
+          text={sequence ? `HGS ${sequence.number}` : 'No HGS open'}
+          spoken={
+            sequence
+              ? `Hero goal sequence ${sequence.number} of a typical ${HGS_GUIDE.total[0]} to ${HGS_GUIDE.total[1]}.`
+              : 'No hero goal sequence is open.'
+          }
+        />
+        <Term
+          icon="structure"
+          text={`Act ${ACT[def.act]}: ${actSequences} of ~${ACT_GUIDE[def.act]}`}
+          spoken={`Act ${ACT[def.act]} has ${actSequences} sequences so far, about ${ACT_GUIDE[def.act]} is usual.`}
+        />
+        {next && <Term icon={beatIcon(next.key)} text={`Next: ${next.name}`} spoken={`${next.name} approaching.`} />}
+      </View>
 
       {project.model.thematicConflict ? (
-        <Caption>
-          Theme pressure: <Caption tone="primary">{project.model.thematicConflict}</Caption>
-        </Caption>
+        <Term icon="graph" text={project.model.thematicConflict} spoken={`Theme pressure: ${project.model.thematicConflict}`} />
       ) : null}
     </>
   );
@@ -207,12 +222,13 @@ const Sprockets = () => (
 
 function Goal() {
   const { sequence } = useProject();
-  if (!sequence) return <Caption>No goal is open yet.</Caption>;
+  if (!sequence) return <Term icon="target" text="No goal open yet" spoken="No goal is open yet." />;
   return (
     <View style={styles.tight}>
-      <Body strong>{`Goal: ${sequence.goal}`}</Body>
-      {sequence.stake ? <Caption>Stake: {sequence.stake}</Caption> : null}
-      {sequence.obstacle ? <Caption>Obstacle: {sequence.obstacle}</Caption> : null}
+      <Eyebrow>Current goal</Eyebrow>
+      <Body strong>{sequence.goal}</Body>
+      {sequence.stake ? <Term icon="warning" text={sequence.stake} spoken={`Stake: ${sequence.stake}`} /> : null}
+      {sequence.obstacle ? <Term icon="lock" text={sequence.obstacle} spoken={`Obstacle: ${sequence.obstacle}`} /> : null}
       <View style={styles.row}>
         <ProgressBar value={sequence.progress} max={sequence.required} label="Goal progress" style={styles.grow} />
         <Caption>
@@ -373,12 +389,14 @@ export function DiscoverCard({ order }: { order: number }) {
 /** North-star metric (PRD §54): a count of discoveries, never a score. */
 function NorthStar({ thisSession, total }: { thisSession: number | null; total: number }) {
   return (
-    <View style={styles.tight}>
-      <Body strong>
-        {thisSession !== null ? `${thisSession} meaningful ${thisSession === 1 ? 'discovery' : 'discoveries'} this session` : 'No session running'}
-      </Body>
-      <Caption>{total} across the project so far.</Caption>
-      <Caption tone="tertiary">Counted when a discovery emerged in rehearsal and the team is considering it or promoted it.</Caption>
+    <View style={styles.beatHead}>
+      <InkMark name="discover" />
+      <View style={[styles.grow, styles.tight]}>
+        <Body strong>
+          {thisSession !== null ? `${thisSession} meaningful ${thisSession === 1 ? 'discovery' : 'discoveries'} this session` : 'No session running'}
+        </Body>
+        <Caption>{total} across the project</Caption>
+      </View>
     </View>
   );
 }
@@ -467,6 +485,9 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   beatName: { letterSpacing: 1 },
+  // The beat's mark, inked into the card like a rubber stamp.
+  beatHead: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  terms: { flexDirection: 'row', flexWrap: 'wrap', columnGap: spacing.lg, rowGap: spacing.xs },
   requirement: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.sm },
   requirementIcon: { width: 16, height: 22, alignItems: 'center', justifyContent: 'center' },
   stats: { flexDirection: 'row', gap: spacing.md },
