@@ -1,8 +1,8 @@
 // HTTP RPC + WebSocket change feed (shared/api.ts transport). Listens on 0.0.0.0 so phones on the LAN can connect.
-import { existsSync } from 'node:fs';
+import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { networkInterfaces } from 'node:os';
-import { join } from 'node:path';
+import { extname, join, resolve, sep } from 'node:path';
 import { WebSocket, WebSocketServer } from 'ws';
 import { DEFAULT_PORT, type ApiResponse, type OpName, type ServerPush } from '../../shared/api.ts';
 import type { ID } from '../../shared/types.ts';
@@ -17,6 +17,40 @@ const store = await import('./store.ts');
 const PORT = Number(process.env.PORT ?? DEFAULT_PORT);
 const MAX_BODY_BYTES = 2 * 1024 * 1024;
 const HEARTBEAT_MS = 30_000;
+/** The exported web app (npx expo export -p web), served from the same origin when present (Fly.io deploys). */
+const WEB_DIR = resolve(process.env.WEB_DIR ?? join(import.meta.dirname, '..', '..', 'dist'));
+const TYPES: Record<string, string> = {
+  '.html': 'text/html; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon',
+  '.ttf': 'font/ttf',
+  '.woff2': 'font/woff2',
+};
+
+/** A file from the web build, else index.html so the client router handles deep links. False when there's no build. */
+function serveWeb(pathname: string, res: ServerResponse): boolean {
+  const index = join(WEB_DIR, 'index.html');
+  if (!existsSync(index)) return false;
+  let file = index;
+  try {
+    file = resolve(WEB_DIR, `.${decodeURIComponent(pathname)}`);
+  } catch {
+    // Malformed escape: serve the app shell.
+  }
+  if (!file.startsWith(WEB_DIR + sep) || !existsSync(file) || !statSync(file).isFile()) file = index;
+  const hashed = file.includes(`${sep}_expo${sep}`) || file.includes(`${sep}assets${sep}`);
+  res.writeHead(200, {
+    'content-type': TYPES[extname(file)] ?? 'application/octet-stream',
+    'cache-control': hashed ? 'public, max-age=31536000, immutable' : 'no-cache',
+  });
+  createReadStream(file).pipe(res);
+  return true;
+}
 
 function send(res: ServerResponse, status: number, body: unknown): void {
   res.writeHead(status, { 'content-type': 'application/json; charset=utf-8' });
@@ -74,6 +108,7 @@ const server = createServer(async (req, res) => {
     return send(res, 200, { ok: true, director: directorInfo(), projects: store.list().length });
   }
   const op = url.pathname.startsWith('/api/') ? url.pathname.slice('/api/'.length) : '';
+  if (req.method === 'GET' && !op && serveWeb(url.pathname, res)) return;
   if (req.method !== 'POST' || !op) return send(res, 404, { ok: false, error: 'Not found' } satisfies ApiResponse<never>);
   if (!Object.hasOwn(handlers, op)) return send(res, 404, { ok: false, error: `Unknown op: ${op}` } satisfies ApiResponse<never>);
 

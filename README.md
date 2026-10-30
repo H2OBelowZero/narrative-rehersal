@@ -61,14 +61,24 @@ offline Director for that step. The Welcome screen shows which Director is activ
 | `shared/script.ts` | Write Room save merge and change tracking (tested in `server/test/script.test.ts`) |
 | `src/components/ui/` | Cross-platform design system (light + dark) |
 
-## Deploy the web app (Vercel)
+## Deploy (Fly.io)
 
-`vercel.json` builds the web app with `expo export -p web` and serves it as a single-page app from `dist`.
-Import the GitHub repo in Vercel (framework preset: Other; the file sets the build). The rehearsal server is a
-long-running Node process with WebSockets and a file database, so it is not a Vercel function: host it on any
-Node host with HTTPS (Render, Railway, Fly.io, a VPS) using `npm --prefix server start` (it honours `PORT`),
-then set **`EXPO_PUBLIC_SERVER_URL`** = `https://your-server.example` in the Vercel project's environment
-variables and redeploy. Anyone can still point the app elsewhere in **Settings**.
+One Fly app runs everything: the `Dockerfile` exports the web app and the rehearsal server serves it, the RPC API
+and the WebSocket feed from the same origin (`https://narrative-rehersal.fly.dev`). The story store is a JSON file,
+so the app runs as **one machine** with a volume mounted at `/data` (`fly.toml`).
+
+```bash
+fly deploy
+```
+
+```bash
+fly scale count 1
+```
+
+`fly deploy` creates the `story_data` volume on first deploy; `fly scale count 1` keeps a single machine (two
+would each hold their own copy of the stories). For the Claude Director: `fly secrets set ANTHROPIC_API_KEY=…`.
+Phones running a native build point at the same server by building with
+`EXPO_PUBLIC_SERVER_URL=https://narrative-rehersal.fly.dev`, or by entering it in **Settings**.
 
 ## Checks
 

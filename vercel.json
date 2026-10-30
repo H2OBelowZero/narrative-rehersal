@@ -1,8 +1,0 @@
-{
-  "buildCommand": "npx expo export -p web",
-  "outputDirectory": "dist",
-  "devCommand": "npx expo start --web --port $PORT",
-  "cleanUrls": true,
-  "framework": null,
-  "rewrites": [{ "source": "/:path*", "destination": "/" }]
-}

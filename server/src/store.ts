@@ -5,7 +5,8 @@ import { join } from 'node:path';
 import type { ID, Project } from '../../shared/types.ts';
 import { nowIso } from './engine.ts';
 
-const DATA_DIR = join(import.meta.dirname, '..', 'data');
+// DATA_DIR points at a persistent volume in production (Fly.io mounts one at /data).
+const DATA_DIR = process.env.DATA_DIR ?? join(import.meta.dirname, '..', 'data');
 const DB_FILE = join(DATA_DIR, 'db.json');
 const SAVE_DELAY_MS = 250;
 

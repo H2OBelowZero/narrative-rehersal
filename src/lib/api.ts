@@ -16,8 +16,11 @@ const OVERRIDE_KEY = 'nr.serverUrl';
 
 /** Where the server most likely is when the user hasn't set an address. */
 export function defaultServerUrl(): string {
-  // A hosted build (e.g. on Vercel) names its server at build time; the server can't run beside a static site.
-  if (process.env.EXPO_PUBLIC_SERVER_URL) return normalizeServerUrl(process.env.EXPO_PUBLIC_SERVER_URL);
+  const configured = process.env.EXPO_PUBLIC_SERVER_URL;
+  // The Fly.io build is served by the rehearsal server itself, so the web app talks to its own origin.
+  if (configured === 'same-origin' && Platform.OS === 'web' && typeof location !== 'undefined') return location.origin;
+  // Native builds (and web builds hosted elsewhere) name the server at build time.
+  if (configured && configured !== 'same-origin') return normalizeServerUrl(configured);
   if (Platform.OS === 'web' && typeof location !== 'undefined' && location.hostname) {
     return `${location.protocol}//${location.hostname}:${DEFAULT_PORT}`;
   }

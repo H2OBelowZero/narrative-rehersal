@@ -1,52 +1,20 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
-node_modules/
-
-# Expo
-.expo/
-dist/
-web-build/
-expo-env.d.ts
-
-# Native
-.kotlin/
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-
-# Metro
-.metro-health-check*
-
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# macOS
-.DS_Store
-*.pem
-
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
-
-example
-
-# generated native folders
-/ios
-/android
-
-# Server secrets and local data
+# Built inside the image or not needed there.
+.git
+node_modules
+server/node_modules
+dist
+.expo
+web-build
+ios
+android
+# Secrets and local data never enter the image: set secrets with `fly secrets set`.
 server/.env
-server/data/
-
-# Local tool caches
-.serena/cache/
-.serena/project.local.yml
-.vercel
+server/data
+*.pem
+*.key
+# Local tooling and design review captures.
+.claude
+.impeccable
+.serena
+.vscode
+docs

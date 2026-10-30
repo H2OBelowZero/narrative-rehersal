@@ -1,39 +1,32 @@
 # syntax = docker/dockerfile:1
+# One image for Fly.io: the rehearsal server (Node runs its TypeScript directly) serving the exported web app,
+# its RPC API and the WebSocket change feed from the same origin.
 
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=22.21.1
+ARG NODE_VERSION=24
 FROM node:${NODE_VERSION}-slim AS base
-
-LABEL fly_launch_runtime="Node.js"
-
-# Node.js app lives here
 WORKDIR /app
 
-# Set production environment
-ENV NODE_ENV="production"
-
-
-# Throw-away build stage to reduce size of final image
-FROM base AS build
-
-# Install packages needed to build node modules
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
-
-# Install node modules
-COPY package-lock.json package.json ./
+# ── Build the web app ──
+FROM base AS web
+COPY package.json package-lock.json ./
 RUN npm ci
-
-# Copy application code
 COPY . .
+# The served web app talks to the server that serves it.
+ENV EXPO_PUBLIC_SERVER_URL=same-origin
+RUN npx expo export -p web
 
+# ── Server dependencies ──
+FROM base AS server
+COPY server/package.json server/package-lock.json ./server/
+RUN npm ci --prefix server --omit=dev
 
-# Final stage for app image
+# ── Runtime ──
 FROM base
-
-# Copy built application
-COPY --from=build /app /app
-
-# Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
-CMD [ "npm", "run", "start" ]
+ENV NODE_ENV=production PORT=8080 DATA_DIR=/data WEB_DIR=/app/dist
+COPY --from=server /app/server/node_modules ./server/node_modules
+COPY server/package.json ./server/
+COPY server/src ./server/src
+COPY shared ./shared
+COPY --from=web /app/dist ./dist
+EXPOSE 8080
+CMD ["node", "server/src/index.ts"]

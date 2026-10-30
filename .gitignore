@@ -49,4 +49,3 @@ server/data/
 # Local tool caches
 .serena/cache/
 .serena/project.local.yml
-.vercel
